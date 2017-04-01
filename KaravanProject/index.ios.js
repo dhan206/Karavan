@@ -15,34 +15,30 @@ import {
   Alert
 } from 'react-native';
 
-const onLoginPress = () => {
-  Alert.alert("Wrong password. Please try again.");
-}
-
-// const onChangeText = () => {
-//   Alert.alert("Text Changed");
-// }
-
 export default class KaravanProject extends Component {
   constructor(props) {
     super(props);
-    // this.username = { text: 'Enter account name' };
-    // this.password = { text: 'Enter password'}
+    this.username = { text: 'Enter account name' };
+    this.password = { text: 'Enter password'}
+  }
+
+  onLoginPress() {
+    if (this.password == 'password') {
+      Alert.alert('Password is correct');
+    } else {
+      Alert.alert("Wrong password. Please try again.");
+    }
+    Alert.alert("" + this.password);
   }
 
   render() {
     return (
       <View style={styles.container}>
+        <View style={styles.logoContainer}>
         <Text style={styles.welcome}>
           KaravanProject
         </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
+        </View>
         <View style={styles.inputFieldsContainer}>
           <TextInput
             style={styles.inputField}
@@ -53,12 +49,13 @@ export default class KaravanProject extends Component {
           <TextInput
             style={styles.inputField}
             onChangeText={(text) => this.setState({text})}
+            secureTextEntry={true}
             placeholder="Enter Password"
           />
         </View>
         <View style={styles.loginButtonContainer}>
           <Button 
-            onPress={onLoginPress}
+            onPress={this.onLoginPress}
             title="Log In"
             color="#ffffff"
             accessibilityLabel="Account login button"
