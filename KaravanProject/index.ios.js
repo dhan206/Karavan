@@ -4,6 +4,7 @@
  * @flow
  */
 
+let dataset = require("./mockdata.json");
 import React, { Component } from 'react';
 import {
   AppRegistry,
@@ -23,12 +24,22 @@ export default class KaravanProject extends Component {
   }
 
   onLoginPress() {
-    if (this.password == 'password') {
-      Alert.alert('Password is correct');
-    } else {
-      Alert.alert("Wrong password. Please try again.");
+    for(let person of dataset){
+      Alert.alert(person.username)
+      Alert.alert(username)
+      if (person.username == username){
+        Alert.alert("user exists");
+        if (person.password == password){
+          Alert.alert("login successful!")
+        }
+      }
     }
-    Alert.alert("" + this.password);
+    // if (this.password == 'password') {
+    //   Alert.alert('Password is correct');
+    // } else {
+    //   Alert.alert("Wrong password. Please try again.");
+    // }
+    // Alert.alert("" + this.password);
   }
 
   render() {
