@@ -15,7 +15,7 @@ import {
 import Login from './src/screens/Login';
 import Secured from './src/screens/Secured';
 
-let dataset = require("./data/mockdata.json");
+let dataset = require("./src/data/mockdata.json");
 
 class KaravanProject extends Component {
   state = {
