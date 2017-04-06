@@ -1,126 +1,47 @@
 /**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
+ * KaravanProject INFO Capstone
+ * TEAM: Derek Han, Michael Nguyen, Kendall Reonal, Andrew Kyrios
  */
 
-let dataset = require("./mockdata.json");
+'use strict';
+
 import React, { Component } from 'react';
+
 import {
   AppRegistry,
-  StyleSheet,
-  Text,
-  View,
-  Button,
-  TextInput,
   Alert
 } from 'react-native';
 
-export default class KaravanProject extends Component {
-  constructor(props) {
-    super(props);
-    this.username = { text: 'Enter account name' };
-    this.password = { text: 'Enter password'}
+import Login from './src/screens/Login';
+import Secured from './src/screens/Secured';
+
+let dataset = require("./data/mockdata.json");
+
+class KaravanProject extends Component {
+  state = {
+    isLoggedIn: false
   }
 
-  onLoginPress() {
-    for(let person of dataset){
-      Alert.alert(person.username)
-      Alert.alert(username)
-      if (person.username == username){
-        Alert.alert("user exists");
-        if (person.password == password){
-          Alert.alert("login successful!")
-        }
-      }
-    }
-    // if (this.password == 'password') {
-    //   Alert.alert('Password is correct');
-    // } else {
-    //   Alert.alert("Wrong password. Please try again.");
-    // }
-    // Alert.alert("" + this.password);
-  }
+  // onLoginPress() {
+  //   for(let person of dataset){
+  //     Alert.alert(person.username)
+  //     Alert.alert(username)
+  //     if (person.username == username){
+  //       Alert.alert("user exists");
+  //       if (person.password == password){
+  //         Alert.alert("login successful!")
+  //       }
+  //     }
+  //   }
+  // }
 
   render() {
-    return (
-      <View style={styles.container}>
-        <View style={styles.logoContainer}>
-        <Text style={styles.welcome}>
-          KaravanProject
-        </Text>
-        </View>
-        <View style={styles.inputFieldsContainer}>
-          <TextInput
-            style={styles.inputField}
-            onChangeText={(text) => this.setState({text})}
-            autoFocus={true}
-            placeholder="Enter Account Name"
-          />
-          <TextInput
-            style={styles.inputField}
-            onChangeText={(text) => this.setState({text})}
-            secureTextEntry={true}
-            placeholder="Enter Password"
-          />
-        </View>
-        <View style={styles.loginButtonContainer}>
-          <Button 
-            onPress={this.onLoginPress}
-            title="Log In"
-            color="#ffffff"
-            accessibilityLabel="Account login button"
-          />
-        </View>
-      </View>
-    );
+    if (this.state.isLoggedIn) {
+      return <Secured onLogoutPress={() => this.setState({isLoggedIn: false})} />;
+    } else {
+      return <Login onLoginPress={() => this.setState({isLoggedIn: true})} />;
+    }
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#2980b9',
-    padding: 20
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-  inputFieldsContainer: {
-    alignSelf: 'stretch',
-    marginVertical: 20
-  },
-  loginButtonContainer: {
-    backgroundColor: '#1db0a2',
-    borderRadius: 5,
-    alignSelf: 'stretch',
-    paddingVertical: 10,
-    shadowColor: '#000000',
-    shadowOffset: {
-      width: 0,
-      height: 3
-    },
-    shadowRadius: 10,
-    shadowOpacity: 0.25
-  },
-  inputField: {
-    height: 50,
-    marginBottom: 10,
-    paddingHorizontal: 10,
-    borderRadius: 3,
-    color: 'black',
-    backgroundColor: '#ffffff',
-    borderColor: 'gray'
-  }
-});
 
 AppRegistry.registerComponent('KaravanProject', () => KaravanProject);
