@@ -9,8 +9,11 @@ import {
   View,
   Button,
   TextInput,
-  Alert
+  Alert,
+  Image
 } from 'react-native';
+
+var karavanLogo = require('../img/logo.png');
 
 export default class Login extends Component {
   constructor(props) {
@@ -27,35 +30,37 @@ export default class Login extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.logoContainer}>
-        <Text style={styles.welcome}>
-          KaravanProject
-        </Text>
+          <Image 
+            style={styles.logoStyle}
+            source={karavanLogo} />
         </View>
-        <View style={styles.inputFieldsContainer}>
-          <TextInput
-            style={styles.inputField}
-            onChangeText={(username) => this.setState({username})}
-            autoFocus={true}
-            placeholder="Enter Account Name"
-          />
-          <TextInput
-            style={styles.inputField}
-            onChangeText={(password) => this.setState({password})}
-            secureTextEntry={true}
-            placeholder="Enter Password"
-          />
-        </View>
-        <View style={styles.loginMessage}>
-          <Text>{ this.state.message }</Text>
-        </View>
-        <View style={styles.loginButtonContainer}>
-          <Button 
-            title="Log In"
-            color="#ffffff"
-            accessibilityLabel="Account login button"
-            onPress={this.props.onLoginPress}
-            disabled={this.state.isLoggingIn||!this.state.username||!this.state.password}
-          />
+        <View style={styles.interactionContainer}>
+          <View style={styles.inputFieldsContainer}>
+            <TextInput
+              style={styles.inputField}
+              onChangeText={(username) => this.setState({username})}
+              autoFocus={true}
+              placeholder="Enter Account Name"
+            />
+            <TextInput
+              style={styles.inputField}
+              onChangeText={(password) => this.setState({password})}
+              secureTextEntry={true}
+              placeholder="Enter Password"
+            />
+          </View>
+          <View style={styles.loginMessage}>
+            <Text>{ this.state.message }</Text>
+          </View>
+          <View style={styles.loginButtonContainer}>
+            <Button 
+              title="Log In"
+              color="#ffffff"
+              accessibilityLabel="Account login button"
+              onPress={this.props.onLoginPress}
+              disabled={this.state.isLoggingIn||!this.state.username||!this.state.password}
+            />
+          </View>
         </View>
       </View>
     );
@@ -70,10 +75,14 @@ const styles = StyleSheet.create({
     backgroundColor: '#2980b9',
     padding: 20
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
+  logoContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  logoStyle: {
+    width: 200,
+    height: 200
   },
   instructions: {
     textAlign: 'center',
@@ -82,7 +91,13 @@ const styles = StyleSheet.create({
   },
   inputFieldsContainer: {
     alignSelf: 'stretch',
-    marginVertical: 20
+  },
+  interactionContainer: {
+    alignSelf: 'stretch',
+    backgroundColor: 'lightgray',
+    borderRadius: 5,
+    padding: 20,
+    marginBottom: 100
   },
   loginButtonContainer: {
     backgroundColor: '#1db0a2',
