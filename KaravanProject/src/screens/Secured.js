@@ -16,11 +16,6 @@ export default class Secured extends Component {
     render() {
     return (
       <View style={styles.container}>
-        <View style={styles.logoContainer}>
-        <Text style={styles.welcome}>
-          KaravanProject
-        </Text>
-        </View>
         <View style={styles.loginButtonContainer}>
           <Button 
             onPress={this.props.onLogoutPress}
@@ -41,16 +36,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#2980b9',
     padding: 20
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
   },
   loginButtonContainer: {
     backgroundColor: '#1db0a2',
