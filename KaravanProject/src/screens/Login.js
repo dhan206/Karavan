@@ -58,7 +58,7 @@ export default class Login extends Component {
               title="Log In"
               color="#ffffff"
               accessibilityLabel="Account login button"
-              onPress={this.props.onLoginPress}
+              onPress={this.props.onLoginPress.bind(this, this.state)}
               disabled={this.state.isLoggingIn||!this.state.username||!this.state.password}
             />
           </View>

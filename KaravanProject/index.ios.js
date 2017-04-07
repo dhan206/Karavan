@@ -23,23 +23,10 @@ class KaravanProject extends Component {
     isLoggedIn: false
   }
 
-  // onLoginPress() {
-  //   for(let person of dataset){
-  //     Alert.alert(person.username)
-  //     Alert.alert(username)
-  //     if (person.username == username){
-  //       Alert.alert("user exists");
-  //       if (person.password == password){
-  //         Alert.alert("login successful!")
-  //       }
-  //     }
-  //   }
-  // }
-
-  _attemptLogin = (event) => {
+  _attemptLogin = (object) => {
     for(var person of dataset) {
-      if(person.username == "user") {
-        if(person.password == "password") {
+      if(person.username == object.username) {
+        if(person.password == object.password) {
           this.setState({ isLoggedIn: true })
         }
       }
@@ -50,8 +37,7 @@ class KaravanProject extends Component {
     if (this.state.isLoggedIn) {
       return <Secured onLogoutPress={() => this.setState({isLoggedIn: false})} />;
     } else {
-      // return <Login onLoginPress={() => this.setState({ isLoggedIn: true })} />;
-      return <Login onLoginPress={(event) => this._attemptLogin(event)} />;
+      return <Login onLoginPress={(object) => this._attemptLogin(object)} />;
     }
   }
 }
