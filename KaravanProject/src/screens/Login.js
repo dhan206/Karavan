@@ -53,8 +53,8 @@ export default class Login extends Component {
               placeholder="Enter Password"
             />
           </View>
-          <View style={styles.loginMessage}>
-            <Text>{ this.state.message }</Text>
+          <View style={styles.loginMessageContainer}>
+            <Text style={styles.loginMessage}>{ this.state.message }</Text>
           </View>
           <View style={styles.loginButtonContainer}>
             <Button 
@@ -124,5 +124,9 @@ const styles = StyleSheet.create({
     color: 'black',
     backgroundColor: '#ffffff',
     borderColor: 'gray'
+  },
+  loginMessage: {
+    color: 'red',
+    marginBottom: 10
   }
 });
