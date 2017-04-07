@@ -15,17 +15,11 @@ export default class Secured extends Component {
     render() {
     return (
       <View style={styles.container}>
-        <MapView
-          style={styles.map}
-          showsUserLocation={true}
-          followUserLocation={true}
-          showCompass={true}
-        />
-        <Button 
-            onPress={this.props.navigateButton.bind(this, "Map")}
-            title="Next Screen"
+         <Button 
+            onPress={this.props.navigateButton.bind(this, "Home")}
+            title="Back to Home"
             color="#ffffff"
-            accessibilityLabel="Next Screen"
+            accessibilityLabel="Back to Home"
           />
         <Text style={styles.secureMessage}>
           This page is secure. Only users that are logged in can access this page.
