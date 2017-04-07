@@ -41,12 +41,15 @@ export default class Login extends Component {
               style={styles.inputField}
               onChangeText={(username) => this.setState({username})}
               autoFocus={true}
+              autoCorrect={false}
+              autoCapitalize="none"
               placeholder="Enter Account Name"
             />
             <TextInput
               style={styles.inputField}
               onChangeText={(password) => this.setState({password})}
               secureTextEntry={true}
+              autoCorrect={false}
               placeholder="Enter Password"
             />
           </View>
