@@ -10,7 +10,7 @@ import React, { Component } from 'react';
 import {
   AppRegistry,
   Alert,
-  
+  TimerMixin
 } from 'react-native';
 
 import Login from './src/screens/Login';
@@ -31,6 +31,12 @@ class KaravanProject extends Component {
         if(person.password == object.password) {
           this.setState({ screenName: "Home" });
           this.setState({ isLoggedIn: true });
+          setTimeout(
+            () => {
+              Alert.alert("Security Assurances", "Logged out after 5 minutes.");
+              this.setState({ isLoggedIn: false });
+              this.forceUpdate();
+            }, 300000);
         } else {
           object.message = "Invalid username and password combination.";
           this.forceUpdate();
