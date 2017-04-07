@@ -16,6 +16,9 @@ export default class Secured extends Component {
     render() {
     return (
       <View style={styles.container}>
+        <Text style={styles.secureMessage}>
+          This page is secure. Only users that are logged in can access this page.
+        </Text>
         <View style={styles.loginButtonContainer}>
           <Button 
             onPress={this.props.onLogoutPress}
@@ -49,5 +52,11 @@ const styles = StyleSheet.create({
     },
     shadowRadius: 10,
     shadowOpacity: 0.25
+  },
+  secureMessage: {
+    fontSize: 20,
+    textAlign: 'center',
+    margin: 10,
+    color: 'white'
   }
 });
