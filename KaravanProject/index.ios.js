@@ -28,7 +28,13 @@ class KaravanProject extends Component {
       if(person.username == object.username) {
         if(person.password == object.password) {
           this.setState({ isLoggedIn: true })
+        } else {
+          object.message = "Invalid username and password combination.";
+          this.forceUpdate()
         }
+      } else {
+        object.message = "Invalid username and password combination.";
+        this.forceUpdate()
       }
     }
   }
