@@ -10,7 +10,8 @@ import {
   Button,
   TextInput,
   Alert,
-  Image
+  Image,
+  KeyboardAvoidingView
 } from 'react-native';
 
 var karavanLogo = require('../img/logo.png');
@@ -34,7 +35,7 @@ export default class Login extends Component {
             style={styles.logoStyle}
             source={karavanLogo} />
         </View>
-        <View style={styles.interactionContainer}>
+        <KeyboardAvoidingView style={styles.interactionContainer}>
           <View style={styles.inputFieldsContainer}>
             <TextInput
               style={styles.inputField}
@@ -61,7 +62,7 @@ export default class Login extends Component {
               disabled={this.state.isLoggingIn||!this.state.username||!this.state.password}
             />
           </View>
-        </View>
+        </KeyboardAvoidingView>
       </View>
     );
   }
