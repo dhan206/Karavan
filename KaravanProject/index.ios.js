@@ -21,7 +21,7 @@ var dataset = require("./src/data/mockdata.json");
 
 class KaravanProject extends Component {
   state = {
-    isLoggedIn: false,
+    isLoggedIn: true,
     screenName: "Home"
   }
 
@@ -52,7 +52,7 @@ class KaravanProject extends Component {
         return <Secured 
             onLogoutPress={() => this.setState({isLoggedIn: false})}
             navigateButton={(screenName) => this._navigateToNewScreen(screenName)}
-          />;
+          />
       } else if (this.state.screenName == "Map") {
         return <NextScreen 
              onLogoutPress={() => this.setState({isLoggedIn: false})}
@@ -60,7 +60,8 @@ class KaravanProject extends Component {
           />
       }
     } else {
-      return <Login onLoginPress={(object) => this._attemptLogin(object)} />;
+      //return <Login onLoginPress={(object) => this._attemptLogin(object)} />;
+      return <NextScreen/>
     }
   }
 }

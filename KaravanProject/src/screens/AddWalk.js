@@ -1,7 +1,7 @@
 'use strict';
 
 import React, { Component } from 'react';
-import Icon from 'react-native-vector-icons';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 import {
   AppRegistry,
@@ -27,6 +27,7 @@ export default class Secured extends Component {
           showCompass={true}
         />
           <View style={styles.navigation}>
+            <Icon name='Home' size={30} color="#4F8EF7" />
             <Button 
                 onPress={this.props.navigateButton.bind(this, "Map")}
                 title="Home"
