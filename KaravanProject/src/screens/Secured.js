@@ -18,7 +18,6 @@ export default class Secured extends Component {
       <View style={styles.container}>
         <View style={styles.banner}>
           <Text style={styles.title}> Home </Text>
-
         </View>
         <MapView
           style={styles.map}
@@ -28,19 +27,19 @@ export default class Secured extends Component {
         />
           <View style={styles.navigation}>
             <Button 
-                onPress={this.props.navigateButton.bind(this, "Map")}
+                onPress={this.props.navigateButton.bind(this, "Home")}
                 title="Home"
                 color="#ffffff"
                 accessibilityLabel="Next Screen"
               />
             <Button 
-            onPress={this.props.navigateButton.bind(this, "Map")}
+            onPress={this.props.navigateButton.bind(this, "Walks")}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 ß
             title="Walks"
             color="#ffffff"
             accessibilityLabel="Next Screen"
           />
           <Button 
-            onPress={this.props.navigateButton.bind(this, "Map")}
+            onPress={this.props.navigateButton.bind(this, "Walks")} // need to create settings page
             title="Settings"
             color="#ffffff"
             accessibilityLabel="Next Screen"

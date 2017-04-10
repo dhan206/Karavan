@@ -1,7 +1,6 @@
 'use strict';
 
 import React, { Component } from 'react';
-import Icon from 'react-native-vector-icons/Ionicons';
 
 import {
   AppRegistry,
@@ -12,49 +11,31 @@ import {
   MapView
 } from 'react-native';
 
-export default class Secured extends Component {
+export default class Walks extends Component {
     render() {
     return (
       <View style={styles.container}>
         <View style={styles.banner}>
-          <Text style={styles.title}> Home </Text>
-
+          <Text style={styles.title}> Walks </Text>
         </View>
-        <MapView
-          style={styles.map}
-          showsUserLocation={true}
-          followUserLocation={true}
-          showCompass={true}
-        />
-          <View style={styles.navigation}>
-            <Icon name='Home' size={30} color="#4F8EF7" />
             <Button 
-                onPress={this.props.navigateButton.bind(this, "Map")}
+                onPress={this.props.navigateButton.bind(this, "Home")}
                 title="Home"
                 color="#ffffff"
                 accessibilityLabel="Next Screen"
               />
             <Button 
-            onPress={this.props.navigateButton.bind(this, "Map")}
+            onPress={this.props.navigateButton.bind(this, "Walks")}
             title="Walks"
             color="#ffffff"
             accessibilityLabel="Next Screen"
           />
           <Button 
-            onPress={this.props.navigateButton.bind(this, "Map")}
+            onPress={this.props.navigateButton.bind(this, "Walks")} // need to create settings page
             title="Settings"
             color="#ffffff"
             accessibilityLabel="Next Screen"
           />
-          </View>
-        {/*<View style={styles.loginButtonContainer}>
-          <Button 
-            onPress={this.props.onLogoutPress}
-            title="Logout"
-            color="#ffffff"
-            accessibilityLabel="Logout"
-          />
-        </View>*/}
       </View>
     );
   }
@@ -63,7 +44,7 @@ export default class Secured extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
+    //justifyContent: 'center',
     //alignItems: 'center',
     backgroundColor: '#2980b9',
   },

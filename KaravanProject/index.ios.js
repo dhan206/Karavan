@@ -16,12 +16,14 @@ import {
 import Login from './src/screens/Login';
 import Secured from './src/screens/Secured';
 import NextScreen from './src/screens/NextScreen';
+import Walks from './src/screens/Walks'
+import AddWalk from './src/screens/AddWalk'
 
 var dataset = require("./src/data/mockdata.json");
 
 class KaravanProject extends Component {
   state = {
-    isLoggedIn: true,
+    isLoggedIn: false ,
     screenName: "Home"
   }
 
@@ -58,10 +60,21 @@ class KaravanProject extends Component {
              onLogoutPress={() => this.setState({isLoggedIn: false})}
              navigateButton={(screenName) => this._navigateToNewScreen(screenName)}
           />
+      } else if (this.state.screenName == "Walks"){
+        return <Walks
+             onLogoutPress={() => this.setState({isLoggedIn: false})}
+             navigateButton={(screenName) => this._navigateToNewScreen(screenName)}
+
+        />
+      } else if (this.state.screenName == "AddWalks"){
+        return <Walks
+             onLogoutPress={() => this.setState({isLoggedIn: false})}
+             navigateButton={(screenName) => this._navigateToNewScreen(screenName)}
+
+        />
       }
     } else {
-      //return <Login onLoginPress={(object) => this._attemptLogin(object)} />;
-      return <NextScreen/>
+      return <Login onLoginPress={(object) => this._attemptLogin(object)} />;
     }
   }
 }
