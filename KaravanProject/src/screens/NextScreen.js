@@ -8,65 +8,110 @@ import {
   Text,
   View,
   Button,
-  MapView
+  MapView,
+  TabBarIOS
 } from 'react-native';
 
-export default class Secured extends Component {
+export default class taskBar extends Component {
+
+    state = {
+    selectedTab: 'redTab',
+    notifCount: 0,
+    presses: 0,
+  };
+
+  _renderContent = (color: string, pageText: string, num?: number) => {
+    return (
+      <View style={[styles.tabContent, {backgroundColor: color}]}>
+        <Text style={styles.tabText}>{pageText}</Text>
+        <Text style={styles.tabText}>{num} re-renders of the {pageText}</Text>
+      </View>
+    );
+  };
+
     render() {
     return (
-      <View style={styles.container}>
-         <Button 
-            onPress={this.props.navigateButton.bind(this, "Home")}
-            title="Back to Home"
-            color="#ffffff"
-            accessibilityLabel="Back to Home"
-          />
-        <Text style={styles.secureMessage}>
-          This page is secure. Only users that are logged in can access this page.
-        </Text>
-        <View style={styles.loginButtonContainer}>
-          <Button 
-            onPress={this.props.onLogoutPress}
-            title="Logout"
-            color="#ffffff"
-            accessibilityLabel="Logout"
-          />
-        </View>
-      </View>
+      // {/*<View style={{ flex: 1,
+      //   flexDirection: 'column',
+      //   justifyContent: 'space-between',}}>
+      //   <View style={styles.banner}>
+      //     <Text style={styles.title}> TEMPLATE </Text>
+      //   </View>
+      //   <View >
+      //     <View style={styles.taskBar}>
+      //       <Button title='home'/>
+      //       <Button title='walks'/>
+      //       <Button title='setting'/>
+      //     </View>
+      //   </View>
+      // <View >
+      <TabBarIOS
+        unselectedTintColor="white"
+        tintColor="cornflowerblue"
+        unselectedItemTintColor="red"
+        barTintColor="whitesmoke">
+        <TabBarIOS.Item
+          title="Home"
+          //icon={{uri: base64Icon, scale: 3}}
+          selected={this.state.selectedTab === 'blueTab'}
+          onPress={() => {
+            this.setState({
+              selectedTab: 'blueTab',
+            });
+          }}>
+          
+          <Secured/>
+        </TabBarIOS.Item>
+        <TabBarIOS.Item
+          title="Walks"
+          //icon={{uri: base64Icon, scale: 3}}
+          selected={this.state.selectedTab === 'blueTab'}
+          onPress={() => {
+            this.setState({
+              selectedTab: 'blueTab',
+            });
+          }}>
+          <Secured/>
+        
+        </TabBarIOS.Item>
+        <TabBarIOS.Item
+          title="Settings"
+          //icon={{uri: base64Icon, scale: 3}}
+          selected={this.state.selectedTab === 'blueTab'}
+          onPress={() => {
+            this.setState({
+              selectedTab: 'blueTab',
+            });
+          }}>
+          <Secured/>
+        </TabBarIOS.Item>
+        </TabBarIOS>
+        //</View>
+        //</View>
+
     );
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
+  banner: {
+    //flex: 1,
+    height: 80,
+    flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#2980b9',
+    justifyContent: 'center',
+    backgroundColor: '#18cd9c',
   },
-  map: {
-    flex: 1,
-    alignSelf: 'stretch',
-    marginVertical: 30
+  title: {
+    fontSize: 25,
+    fontWeight: 'bold',
+    textAlign: 'auto',
+      color: 'white'
   },
-  loginButtonContainer: {
-    backgroundColor: '#1db0a2',
-    borderRadius: 5,
-    alignSelf: 'stretch',
-    paddingVertical: 10,
-    shadowColor: '#000000',
-    shadowOffset: {
-      width: 0,
-      height: 3
-    },
-    shadowRadius: 10,
-    shadowOpacity: 0.25,
-    margin: 30
-  },
-  secureMessage: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-    color: 'white'
+  taskBar: {
+    height: 800,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    //alignItems: 'flex-end',
   }
 });
