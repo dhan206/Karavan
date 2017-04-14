@@ -25,9 +25,9 @@ var dataset = require("./src/data/mockdata.json");
 
 class KaravanProject extends Component {
   state = {
-    isLoggedIn: true,
+    isLoggedIn: false,
     userObject: null,
-    screenName: "WalkData"
+    screenName: "Home"
   }
 
   _attemptLogin = (object) => {
