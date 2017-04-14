@@ -16,46 +16,36 @@ import {
 
 import styles from '../style/style.js';
 
-var example = ["March 21, 2017", "March 22, 2017", "March 23, 2017", "March 30, 2017", "Add a Walk"]
-
-export default class Walks extends Component {
+export default class WalkData extends Component {
 
   constructor() {
-    super();
-    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-    this.state = {
-      dataSource: ds.cloneWithRows(example),
-    }
+      super();
+      const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+      this.state = {
+      }
   }
 
-  
 
-  renderRow(rowData, sectionID, rowID) {
-    return(
-        <TouchableHighlight onPress={this.props.navigateButton.bind(this, "WalkData")}>
-            <View style={styles.row}>
-                <Text style={styles.rowText}>{rowData}</Text>
-                <Image
-                style={styles.walkArrow}
-                source={{uri: 'http://www.clker.com/cliparts/V/1/Z/A/h/U/left-arrow-right-hi.png'}}
-                />
-            </View>
-            </TouchableHighlight>
-    )
-  }
-
-  render() {
+render() {
     return (
       <View style={styles.container}>
+
         <View style={styles.banner}> 
-          <Text style={styles.title}>Walks</Text>
+          <Text style={styles.title}>March 21, 2017</Text>
         </View>
-        <View >
-        <ListView
-          dataSource={this.state.dataSource}
-          renderRow={this.renderRow.bind(this)}
-          />
+
+        <MapView
+          style={stylez.map}
+          showsUserLocation={true}
+          followUserLocation={true}
+          showCompass={true}
+        />
+
+        <View>
+            <Text style={stylez.stopText}>Scheduled Stop: 14th & Pine</Text>
+            <Text style={stylez.stopText}>Scheduled Time: 7:35 AM</Text>
         </View>
+
           <View style={styles.navigation}>
             <View style={styles.navigationButtonContainer}>
               <Button 
@@ -80,9 +70,18 @@ export default class Walks extends Component {
                 title="Settings"
                 accessibilityLabel="Settings"
               />
-            </View>
-          </View>
+              </View>
+              </View>
       </View>
     );
   }
 }
+
+const stylez = StyleSheet.create({
+  map:{
+      height: 250,
+  },
+  stopText: {
+      textAlign: 'center'
+  }
+});
