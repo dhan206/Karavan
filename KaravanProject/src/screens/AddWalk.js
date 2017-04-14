@@ -31,7 +31,7 @@ export default class Walks extends Component {
             accessibilityLabel="Next Screen"
           />
           <Button 
-            onPress={this.props.navigateButton.bind(this, "Walks")} // need to create settings page
+            onPress={this.props.navigateButton.bind(this, "Settings")} // need to create settings page
             title="Settings"
             color="#ffffff"
             accessibilityLabel="Next Screen"

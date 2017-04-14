@@ -14,16 +14,18 @@ import {
 } from 'react-native';
 
 import Login from './src/screens/Login';
-import Secured from './src/screens/Secured';
+import Home from './src/screens/Home';
 import NextScreen from './src/screens/NextScreen';
-import Walks from './src/screens/Walks'
-import AddWalk from './src/screens/AddWalk'
+import Walks from './src/screens/Walks';
+import AddWalk from './src/screens/AddWalk';
+import Settings from './src/screens/Settings';
 
 var dataset = require("./src/data/mockdata.json");
 
 class KaravanProject extends Component {
   state = {
-    isLoggedIn: false ,
+    isLoggedIn: false,
+    userObject: null,
     screenName: "Home"
   }
 
@@ -33,12 +35,18 @@ class KaravanProject extends Component {
         if(person.password == object.password) {
           this.setState({ screenName: "Home" });
           this.setState({ isLoggedIn: true });
+          this.setState({ userObject: object })
           setTimeout(
             () => {
-              Alert.alert("Security Assurances", "Logged out after 5 minutes.");
-              this.setState({ isLoggedIn: false });
-              this.forceUpdate();
-            }, 300000);
+              Alert.alert(
+                'Security Assurance', 'Logged out after 5 minutes.',
+                [
+                  {text: "(@) Fingerprint", onPress: () => this._attemptLogin(this.state.userObject)},
+                  {text: "Close", onPress: () => this.setState({ isLoggedIn: false })},
+                ],
+                { cancelable: false }
+              );
+            }, 2 * 60 * 1000);
         } else {
           object.message = "Invalid username and password combination.";
           this.forceUpdate();
@@ -57,7 +65,7 @@ class KaravanProject extends Component {
   render() {
     if (this.state.isLoggedIn) {
       if (this.state.screenName == "Home") {
-        return <Secured 
+        return <Home
             onLogoutPress={() => this.setState({isLoggedIn: false})}
             navigateButton={(screenName) => this._navigateToNewScreen(screenName)}
           />
@@ -66,17 +74,21 @@ class KaravanProject extends Component {
              onLogoutPress={() => this.setState({isLoggedIn: false})}
              navigateButton={(screenName) => this._navigateToNewScreen(screenName)}
           />
-      } else if (this.state.screenName == "Walks"){
+      } else if (this.state.screenName == "Walks") {
         return <Walks
              onLogoutPress={() => this.setState({isLoggedIn: false})}
              navigateButton={(screenName) => this._navigateToNewScreen(screenName)}
 
         />
-      } else if (this.state.screenName == "AddWalks"){
+      } else if (this.state.screenName == "AddWalks") {
         return <Walks
              onLogoutPress={() => this.setState({isLoggedIn: false})}
              navigateButton={(screenName) => this._navigateToNewScreen(screenName)}
-
+        />
+      } else if (this.state.screenName == "Settings") {
+        return <Settings 
+            onLogoutPress={() => this.setState({isLoggedIn: false})}
+            navigateButton={(screenName) => this._navigateToNewScreen(screenName)}
         />
       }
     } else {
