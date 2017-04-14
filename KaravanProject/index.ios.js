@@ -19,14 +19,15 @@ import NextScreen from './src/screens/NextScreen';
 import Walks from './src/screens/Walks';
 import AddWalk from './src/screens/AddWalk';
 import Settings from './src/screens/Settings';
+import WalkData from './src/screens/WalkData';
 
 var dataset = require("./src/data/mockdata.json");
 
 class KaravanProject extends Component {
   state = {
-    isLoggedIn: false,
+    isLoggedIn: true,
     userObject: null,
-    screenName: "Home"
+    screenName: "WalkData"
   }
 
   _attemptLogin = (object) => {
@@ -87,6 +88,11 @@ class KaravanProject extends Component {
         />
       } else if (this.state.screenName == "Settings") {
         return <Settings 
+            onLogoutPress={() => this.setState({isLoggedIn: false})}
+            navigateButton={(screenName) => this._navigateToNewScreen(screenName)}
+        />
+      } else if (this.state.screenName == "WalkData") {
+        return <WalkData 
             onLogoutPress={() => this.setState({isLoggedIn: false})}
             navigateButton={(screenName) => this._navigateToNewScreen(screenName)}
         />
