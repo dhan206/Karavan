@@ -1,33 +1,18 @@
 'use strict';
 
 import React, { Component } from 'react';
-// import Icon from 'react-native-vector-icons';
 
 import {
-  AppRegistry,
-  StyleSheet,
-  Text,
   View,
-  Button,
-  MapView
+  Button
 } from 'react-native';
 
 import styles from '../style/style.js';
 
-export default class Secured extends Component {
+export default class NavigationBar extends Component {
     render() {
     return (
-      <View style={styles.container}>
-        <View style={styles.banner}>
-          <Text style={styles.title}>Home</Text>
-        </View>
-        <MapView
-          style={styles.map}
-          showsUserLocation={true}
-          followUserLocation={true}
-          showCompass={true}
-        />
-          <View style={styles.navigation}>
+        <View style={styles.navigation}>
           <View style={[styles.navigationButtonContainer, styles.navHomeButton]}>
             <Button 
               color='#ffffff'
@@ -53,7 +38,6 @@ export default class Secured extends Component {
             />
           </View>
         </View>
-      </View>
     );
   }
 }

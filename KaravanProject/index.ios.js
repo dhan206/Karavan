@@ -19,6 +19,7 @@ import NextScreen from './src/screens/NextScreen';
 import Walks from './src/screens/Walks';
 import AddWalk from './src/screens/AddWalk';
 import Settings from './src/screens/Settings';
+import CreateWalk from './src/screens/CreateWalk';
 
 var dataset = require("./src/data/mockdata.json");
 
@@ -66,27 +67,27 @@ class KaravanProject extends Component {
     if (this.state.isLoggedIn) {
       if (this.state.screenName == "Home") {
         return <Home
-            onLogoutPress={() => this.setState({isLoggedIn: false})}
             navigateButton={(screenName) => this._navigateToNewScreen(screenName)}
           />
       } else if (this.state.screenName == "Map") {
         return <NextScreen 
-             onLogoutPress={() => this.setState({isLoggedIn: false})}
              navigateButton={(screenName) => this._navigateToNewScreen(screenName)}
           />
       } else if (this.state.screenName == "Walks") {
         return <Walks
-             onLogoutPress={() => this.setState({isLoggedIn: false})}
              navigateButton={(screenName) => this._navigateToNewScreen(screenName)}
-
         />
       } else if (this.state.screenName == "AddWalks") {
         return <Walks
-             onLogoutPress={() => this.setState({isLoggedIn: false})}
              navigateButton={(screenName) => this._navigateToNewScreen(screenName)}
         />
       } else if (this.state.screenName == "Settings") {
         return <Settings 
+            onLogoutPress={() => this.setState({isLoggedIn: false})}
+            navigateButton={(screenName) => this._navigateToNewScreen(screenName)}
+        />
+      } else if (this.state.screenName == "CreateWalk") {
+        return <CreateWalk
             onLogoutPress={() => this.setState({isLoggedIn: false})}
             navigateButton={(screenName) => this._navigateToNewScreen(screenName)}
         />
