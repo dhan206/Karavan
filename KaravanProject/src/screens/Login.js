@@ -14,6 +14,8 @@ import {
   KeyboardAvoidingView
 } from 'react-native';
 
+import styles from '../style/style.js';
+
 var karavanLogo = require('../img/logo.png');
 
 export default class Login extends Component {
@@ -29,7 +31,7 @@ export default class Login extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <View style={styles.loginContainer}>
         <View style={styles.logoContainer}>
           <Image 
             style={styles.logoStyle}
@@ -70,63 +72,3 @@ export default class Login extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#2980b9',
-    padding: 20
-  },
-  logoContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  logoStyle: {
-    width: 200,
-    height: 200
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-  inputFieldsContainer: {
-    alignSelf: 'stretch',
-  },
-  interactionContainer: {
-    alignSelf: 'stretch',
-    backgroundColor: 'lightgray',
-    borderRadius: 5,
-    padding: 20,
-    marginBottom: 100
-  },
-  loginButtonContainer: {
-    backgroundColor: '#1db0a2',
-    borderRadius: 5,
-    alignSelf: 'stretch',
-    paddingVertical: 10,
-    shadowColor: '#000000',
-    shadowOffset: {
-      width: 0,
-      height: 3
-    },
-    shadowRadius: 10,
-    shadowOpacity: 0.25
-  },
-  inputField: {
-    height: 50,
-    marginBottom: 10,
-    paddingHorizontal: 10,
-    borderRadius: 3,
-    color: 'black',
-    backgroundColor: '#ffffff',
-    borderColor: 'gray'
-  },
-  loginMessage: {
-    color: 'red',
-    marginBottom: 10
-  }
-});
