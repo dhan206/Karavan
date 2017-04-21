@@ -20,6 +20,7 @@ import Walks from './src/screens/Walks';
 import AddWalk from './src/screens/AddWalk';
 import Settings from './src/screens/Settings';
 import CreateWalk from './src/screens/CreateWalk';
+import WalkData from './src/screens/WalkData';
 
 var dataset = require("./src/data/mockdata.json");
 
@@ -39,14 +40,16 @@ class KaravanProject extends Component {
           this.setState({ userObject: object })
           setTimeout(
             () => {
-              Alert.alert(
-                'Security Assurance', 'Logged out after 5 minutes.',
-                [
-                  {text: "(@) Fingerprint", onPress: () => this._attemptLogin(this.state.userObject)},
-                  {text: "Close", onPress: () => this.setState({ isLoggedIn: false })},
-                ],
-                { cancelable: false }
-              );
+              if (this.state.isLoggedIn) {
+                Alert.alert(
+                  'Security Assurance', 'Logged out after 5 minutes.',
+                  [
+                    {text: "(@) Fingerprint", onPress: () => this._attemptLogin(this.state.userObject)},
+                    {text: "Close", onPress: () => this.setState({ isLoggedIn: false })},
+                  ],
+                  { cancelable: false }
+                );
+              }
             }, 2 * 60 * 1000);
         } else {
           object.message = "Invalid username and password combination.";
@@ -88,6 +91,11 @@ class KaravanProject extends Component {
         />
       } else if (this.state.screenName == "CreateWalk") {
         return <CreateWalk
+            onLogoutPress={() => this.setState({isLoggedIn: false})}
+            navigateButton={(screenName) => this._navigateToNewScreen(screenName)}
+        />
+      } else if (this.state.screenName == "WalkData") {
+        return <WalkData 
             onLogoutPress={() => this.setState({isLoggedIn: false})}
             navigateButton={(screenName) => this._navigateToNewScreen(screenName)}
         />

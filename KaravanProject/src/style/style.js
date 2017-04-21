@@ -17,7 +17,8 @@ container: {
   },
   navigationButtonContainer: {
     backgroundColor: '#1db0a2',
-    paddingVertical: 10,
+    paddingVertical: 5,
+    justifyContent: 'center',
     flex: 1
   },
   banner: {
@@ -37,7 +38,8 @@ container: {
   },
   map: {
     flex: 1,
-    alignSelf: 'stretch',
+    //alignSelf: 'stretch',
+    //marginVertical: 30
   },
   buttonContainer: {
     backgroundColor: '#1db0a2',
@@ -122,5 +124,19 @@ container: {
   loginMessage: {
     color: 'red',
     marginBottom: 10
+  },
+  rowText: {
+    fontSize: 20,
+  },
+  row: {
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    padding: 10,
+    backgroundColor: '#FFFFFF',
+  },
+  walkArrow: {
+    height: 30,
+    width: 30,
+    alignItems: 'flex-end'
   }
 });
