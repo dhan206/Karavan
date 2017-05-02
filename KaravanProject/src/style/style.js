@@ -138,5 +138,48 @@ container: {
     height: 30,
     width: 30,
     alignItems: 'flex-end'
+  },
+  landingPageContainer: {
+    backgroundColor: "#2980b9",
+    flex: 1,
+    padding: 40,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  landingPageText: {
+    fontSize: 25,
+    fontStyle: "italic",
+    fontFamily: "Hiragino Sans",
+    color: "white",
+    marginVertical: 20
+  },
+  buttonContainerSignup: {
+    backgroundColor: 'white',
+    color: "#1db0a2",
+    borderRadius: 5,
+    alignSelf: 'stretch',
+    paddingVertical: 10,
+    shadowColor: '#000000',
+    shadowOffset: {
+      width: 0,
+      height: 3
+    },
+    shadowRadius: 10,
+    shadowOpacity: 0.25,
+    margin: 30
+  },
+  buttonContainerLogin: {
+    backgroundColor: '#1db0a2',
+    borderRadius: 5,
+    alignSelf: 'stretch',
+    paddingVertical: 10,
+    shadowColor: '#000000',
+    shadowOffset: {
+      width: 0,
+      height: 3
+    },
+    shadowRadius: 10,
+    shadowOpacity: 0.25,
+    margin: 30
   }
 });
