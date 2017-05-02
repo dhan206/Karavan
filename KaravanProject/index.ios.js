@@ -80,7 +80,6 @@ class KaravanProject extends Component {
   }
 
   render() {
-<<<<<<< HEAD
     if (this.state.isLoggedIn) {
       if (this.state.screenName == "Home") {
         return <Home
@@ -150,6 +149,8 @@ class KaravanProject extends Component {
       }
     }
   }
+
+
 }
 
 AppRegistry.registerComponent('KaravanProject', () => KaravanProject);
