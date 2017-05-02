@@ -24,6 +24,8 @@ import Settings from './src/screens/Settings';
 import CreateWalk from './src/screens/CreateWalk';
 import WalkData from './src/screens/WalkData';
 import Confirm from './src/screens/Confirm';
+import InitialSetupFirst from './src/screens/InitialSetupFirst';
+import LandingPage from './src/screens/LandingPage';
 
 var dataset = require("./src/data/mockdata.json");
 
@@ -39,14 +41,14 @@ class KaravanProject extends Component {
   state = {
     isLoggedIn: false,
     userObject: null,
-    screenName: "Home"
+    showLandingPage: true,
+    screenName: ""
   }
 
   _attemptLogin = (object) => { 
     for(var person of dataset) {
       if(person.username == object.username) {
         if(person.password == object.password) {
-          this.setState({ screenName: "Home" });
           this.setState({ isLoggedIn: true });
           this.setState({ userObject: object })
           setTimeout(
@@ -55,7 +57,7 @@ class KaravanProject extends Component {
                 Alert.alert(
                   'Security Assurance', 'Logged out after 5 minutes.',
                   [
-                    {text: "(@) Fingerprint", onPress: () => this._attemptLogin(this.state.userObject)},
+                    {text: "(@) Fingerprint", onPress: () => this._attemptLogin(this.state.userObject, false)},
                     {text: "Close", onPress: () => this.setState({ isLoggedIn: false })},
                   ],
                   { cancelable: false }
@@ -78,6 +80,7 @@ class KaravanProject extends Component {
   }
 
   render() {
+<<<<<<< HEAD
     if (this.state.isLoggedIn) {
       if (this.state.screenName == "Home") {
         return <Home
@@ -116,8 +119,35 @@ class KaravanProject extends Component {
             navigateButton={(screenName) => this._navigateToNewScreen(screenName)}
         />
       }
+    if (this.state.showLandingPage) {
+      return <LandingPage navigateButton={(screenName) => {this._navigateToNewScreen(screenName); this.setState({showLandingPage: false})}} />
     } else {
-      return <Login onLoginPress={(object) => this._attemptLogin(object)} />;
+      if (this.state.isLoggedIn) {
+        if (this.state.screenName == "Home") {
+          return <Home navigateButton={(screenName) => this._navigateToNewScreen(screenName)} />
+        } else if (this.state.screenName == "Map") {
+          return <NextScreen navigateButton={(screenName) => this._navigateToNewScreen(screenName)} />
+        } else if (this.state.screenName == "Walks") {
+          return <Walks navigateButton={(screenName) => this._navigateToNewScreen(screenName)} />
+        } else if (this.state.screenName == "AddWalks") {
+          return <Walks navigateButton={(screenName) => this._navigateToNewScreen(screenName)} />
+        } else if (this.state.screenName == "Settings") {
+          return <Settings onLogoutPress={() => this.setState({isLoggedIn: false})}
+              navigateButton={(screenName) => this._navigateToNewScreen(screenName)} />
+        } else if (this.state.screenName == "CreateWalk") {
+          return <CreateWalk onLogoutPress={() => this.setState({isLoggedIn: false})}
+              navigateButton={(screenName) => this._navigateToNewScreen(screenName)} />
+        } else if (this.state.screenName == "WalkData") {
+          return <WalkData onLogoutPress={() => this.setState({isLoggedIn: false})}
+              navigateButton={(screenName) => this._navigateToNewScreen(screenName)} />
+        }
+      } else if (this.state.screenName == "Login") {
+        return <Login onLoginPress={(object) => this._attemptLogin(object)} />;
+      } else if (this.state.screenName == "InitialSetupFirst") {
+          return <InitialSetupFirst />
+      } else if (this.state.screenName == "LandingPage") {
+        return <LandingPage navigateButton={(screenName) => this._navigateToNewScreen(screenName)} />
+      }
     }
   }
 }
