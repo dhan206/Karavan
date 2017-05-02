@@ -33,13 +33,11 @@ container: {
   title: {
     fontSize: 25,
     fontWeight: 'bold',
-    textAlign: 'auto',
-      color: 'white'
+    textAlign: 'center',
+    color: 'white'
   },
   map: {
-    flex: 1,
-    //alignSelf: 'stretch',
-    //marginVertical: 30
+    height: 300
   },
   buttonContainer: {
     backgroundColor: '#1db0a2',
@@ -90,12 +88,11 @@ container: {
     marginBottom: 5,
   },
   inputFieldsContainer: {
-    alignSelf: 'stretch',
+    alignSelf: 'auto',
   },
   interactionContainer: {
-    alignSelf: 'stretch',
-    backgroundColor: 'lightgray',
-    borderRadius: 5,
+    alignSelf: 'auto',
+    //borderRadius: 5,
     padding: 20,
     marginBottom: 100
   },
@@ -114,12 +111,12 @@ container: {
   },
   inputField: {
     height: 50,
-    marginBottom: 10,
+    marginBottom: 1,
     paddingHorizontal: 10,
-    borderRadius: 3,
+    borderRadius: 1,
     color: 'black',
     backgroundColor: '#ffffff',
-    borderColor: 'gray'
+    borderColor: 'black'
   },
   loginMessage: {
     color: 'red',
@@ -138,5 +135,11 @@ container: {
     height: 30,
     width: 30,
     alignItems: 'flex-end'
+  },
+  walkData: {
+    fontSize: 25,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    color: 'white'
   }
 });

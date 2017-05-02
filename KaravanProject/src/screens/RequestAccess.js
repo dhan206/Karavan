@@ -18,7 +18,7 @@ import styles from '../style/style.js';
 
 var karavanLogo = require('../img/logo.png');
 
-export default class Login extends Component {
+export default class Request extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -29,30 +29,33 @@ export default class Login extends Component {
     };
   }
 
+  sendRequest(){
+      this.props.onLoginPress.bind(this, this.state)
+      alert("Request Sent");
+  }
+
   render() {
     return (
-      <View style={styles.loginContainer}>
-        <View style={styles.logoContainer}>
-          <Image 
-            style={styles.logoStyle}
-            source={karavanLogo} />
-        </View>
-        <KeyboardAvoidingView style={styles.interactionContainer}>
-          <View style={styles.inputFieldsContainer}>
+        <View style={styles.container}>
+            <View style={styles.banner}>
+                <Text style={styles.title}>Request Access</Text>
+            </View>
+            <KeyboardAvoidingView style={styles.interactionContainer}>
+            <View style={styles.inputFieldsContainer}>
             <TextInput
               style={styles.inputField}
               onChangeText={(username) => this.setState({username})}
               autoFocus={true}
               autoCorrect={false}
               autoCapitalize="none"
-              placeholder="Enter Account Name"
+              placeholder="Enter Registered Full Name"
             />
             <TextInput
               style={styles.inputField}
               onChangeText={(password) => this.setState({password})}
               secureTextEntry={true}
               autoCorrect={false}
-              placeholder="Enter Password"
+              placeholder="Enter Registered Email"
             />
           </View>
           <View style={styles.loginMessageContainer}>
@@ -60,18 +63,15 @@ export default class Login extends Component {
           </View>
           <View style={styles.loginButtonContainer}>
             <Button 
-              title="Log In"
-              color="white"
+              title="Request Account"
+              color="#ffffff"
               accessibilityLabel="Account login button"
-              onPress={this.props.onLoginPress.bind(this, this.state)}
+              onPress={this.sendReuest}
               disabled={this.state.isLoggingIn||!this.state.username||!this.state.password}
             />
           </View>
-          <Button
-            color="white"
-            title="Request Account"
-          />
         </KeyboardAvoidingView>
+        
       </View>
     );
   }

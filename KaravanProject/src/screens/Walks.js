@@ -16,7 +16,7 @@ import {
 
 import styles from '../style/style.js';
 
-var example = ["March 21, 2017", "March 22, 2017", "March 23, 2017", "March 30, 2017", "Add a Walk"]
+var example = ["May 21, 2017", "March 22, 2017", "March 23, 2017", "March 30, 2017"]
 
 export default class Walks extends Component {
 
