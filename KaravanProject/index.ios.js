@@ -39,6 +39,7 @@ class KaravanProject extends Component {
       if(person.username == object.username) {
         if(person.password == object.password) {
           this.setState({ isLoggedIn: true });
+          this.setState({ screenName: "Home"});
           this.setState({ userObject: object })
           setTimeout(
             () => {
@@ -73,7 +74,7 @@ class KaravanProject extends Component {
       return <LandingPage navigateButton={(screenName) => {this._navigateToNewScreen(screenName); this.setState({showLandingPage: false})}} />
     } else {
       if (this.state.isLoggedIn) {
-        if (this.state.screenName == "Home") {
+        if (this.state.screenName == "Home") {          
           return <Home navigateButton={(screenName) => this._navigateToNewScreen(screenName)} />
         } else if (this.state.screenName == "Map") {
           return <NextScreen navigateButton={(screenName) => this._navigateToNewScreen(screenName)} />
@@ -94,7 +95,7 @@ class KaravanProject extends Component {
       } else if (this.state.screenName == "Login") {
         return <Login onLoginPress={(object) => this._attemptLogin(object)} />;
       } else if (this.state.screenName == "InitialSetupFirst") {
-          return <InitialSetupFirst />
+        return <InitialSetupFirst />
       } else if (this.state.screenName == "LandingPage") {
         return <LandingPage navigateButton={(screenName) => this._navigateToNewScreen(screenName)} />
       }
