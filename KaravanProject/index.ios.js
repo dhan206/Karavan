@@ -23,7 +23,10 @@ import AddWalk from './src/screens/AddWalk';
 import Settings from './src/screens/Settings';
 import CreateWalk from './src/screens/CreateWalk';
 import WalkData from './src/screens/WalkData';
+<<<<<<< HEAD
 import Confirm from './src/screens/Confirm';
+=======
+>>>>>>> b6c62710e8b8d2fc88ba6b421f9c861600d2d742
 import InitialSetupFirst from './src/screens/InitialSetupFirst';
 import LandingPage from './src/screens/LandingPage';
 
@@ -102,10 +105,14 @@ class KaravanProject extends Component {
         } else if (this.state.screenName == "WalkData") {
           return <WalkData onLogoutPress={() => this.setState({isLoggedIn: false})}
               navigateButton={(screenName) => this._navigateToNewScreen(screenName)} />
+<<<<<<< HEAD
         } else if (this.state.screenName == "Confirm") {
           return <WalkData onLogoutPress={() => this.setState({isLoggedIn: false})}
               navigateButton={(screenName) => this._navigateToNewScreen(screenName)} />
         } 
+=======
+        }
+>>>>>>> b6c62710e8b8d2fc88ba6b421f9c861600d2d742
       } else if (this.state.screenName == "Login") {
         return <Login onLoginPress={(object) => this._attemptLogin(object)} />;
       } else if (this.state.screenName == "InitialSetupFirst") {
