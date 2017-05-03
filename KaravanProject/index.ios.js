@@ -45,11 +45,12 @@ class KaravanProject extends Component {
     screenName: ""
   }
 
-  _attemptLogin = (object) => { 
+  _attemptLogin = (object) => {
     for(var person of dataset) {
       if(person.username == object.username) {
         if(person.password == object.password) {
           this.setState({ isLoggedIn: true });
+          this.setState({ screenName: "Home"});
           this.setState({ userObject: object })
           setTimeout(
             () => {
@@ -80,49 +81,11 @@ class KaravanProject extends Component {
   }
 
   render() {
-    if (this.state.isLoggedIn) {
-      if (this.state.screenName == "Home") {
-        return <Home
-            navigateButton={(screenName) => this._navigateToNewScreen(screenName)}
-          />
-      } else if (this.state.screenName == "Map") {
-        return <NextScreen 
-             navigateButton={(screenName) => this._navigateToNewScreen(screenName)}
-          />
-      } else if (this.state.screenName == "Walks") {
-        return <Walks
-             navigateButton={(screenName) => this._navigateToNewScreen(screenName)}
-        />
-      } else if (this.state.screenName == "AddWalks") {
-        return <Walks
-             navigateButton={(screenName) => this._navigateToNewScreen(screenName)}
-        />
-      } else if (this.state.screenName == "Settings") {
-        return <Settings 
-            onLogoutPress={() => this.setState({isLoggedIn: false})}
-            navigateButton={(screenName) => this._navigateToNewScreen(screenName)}
-        />
-      } else if (this.state.screenName == "CreateWalk") {
-        return <CreateWalk
-            onLogoutPress={() => this.setState({isLoggedIn: false})}
-            navigateButton={(screenName) => this._navigateToNewScreen(screenName)}
-        />
-      } else if (this.state.screenName == "WalkData") {
-        return <WalkData 
-            onLogoutPress={() => this.setState({isLoggedIn: false})}
-            navigateButton={(screenName) => this._navigateToNewScreen(screenName)}
-        />
-    } else if (this.state.screenName == "Confirm") {
-        return <Confirm 
-            onLogoutPress={() => this.setState({isLoggedIn: false})}
-            navigateButton={(screenName) => this._navigateToNewScreen(screenName)}
-        />
-      }
     if (this.state.showLandingPage) {
       return <LandingPage navigateButton={(screenName) => {this._navigateToNewScreen(screenName); this.setState({showLandingPage: false})}} />
     } else {
       if (this.state.isLoggedIn) {
-        if (this.state.screenName == "Home") {
+        if (this.state.screenName == "Home") {          
           return <Home navigateButton={(screenName) => this._navigateToNewScreen(screenName)} />
         } else if (this.state.screenName == "Map") {
           return <NextScreen navigateButton={(screenName) => this._navigateToNewScreen(screenName)} />
@@ -139,18 +102,19 @@ class KaravanProject extends Component {
         } else if (this.state.screenName == "WalkData") {
           return <WalkData onLogoutPress={() => this.setState({isLoggedIn: false})}
               navigateButton={(screenName) => this._navigateToNewScreen(screenName)} />
-        }
+        } else if (this.state.screenName == "Confirm") {
+          return <WalkData onLogoutPress={() => this.setState({isLoggedIn: false})}
+              navigateButton={(screenName) => this._navigateToNewScreen(screenName)} />
+        } 
       } else if (this.state.screenName == "Login") {
         return <Login onLoginPress={(object) => this._attemptLogin(object)} />;
       } else if (this.state.screenName == "InitialSetupFirst") {
-          return <InitialSetupFirst />
+        return <InitialSetupFirst />
       } else if (this.state.screenName == "LandingPage") {
         return <LandingPage navigateButton={(screenName) => this._navigateToNewScreen(screenName)} />
       }
     }
   }
-
-
 }
 
-AppRegistry.registerComponent('KaravanProject', () => KaravanProject);
+AppRegistry.registerComponent('KaravanProject', () => KaravanProject)
