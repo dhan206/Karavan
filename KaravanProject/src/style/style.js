@@ -136,15 +136,12 @@ container: {
     width: 30,
     alignItems: 'flex-end'
   },
-<<<<<<< HEAD
   walkData: {
     fontSize: 25,
     fontWeight: 'bold',
     textAlign: 'center',
     color: 'white'
   },
-=======
->>>>>>> b6c62710e8b8d2fc88ba6b421f9c861600d2d742
   landingPageContainer: {
     backgroundColor: "#2980b9",
     flex: 1,
