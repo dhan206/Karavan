@@ -10,6 +10,10 @@ import {
 import styles from '../style/style.js';
 
 export default class NavigationBar extends Component {
+    constructor(){
+      super();
+    }
+
     render() {
     return (
         <View style={styles.navigation}>

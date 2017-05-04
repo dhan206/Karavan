@@ -42,8 +42,8 @@ render() {
         />
 
         <View>
-            <Text style={stylez.stopText}>Scheduled Stop: 14th & Pine</Text>
-            <Text style={stylez.stopText}>Scheduled Time: 7:35 AM</Text>
+            <Text style={styles.walkData}>Scheduled Stop: 14th & Pine</Text>
+            <Text style={styles.walkData}>Scheduled Time: 7:35 AM</Text>
         </View>
 
           <View style={styles.navigation}>

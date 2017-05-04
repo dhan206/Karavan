@@ -13,6 +13,8 @@ import {
   TimerMixin
 } from 'react-native';
 
+// import * as firebase from 'firebase';
+
 import Login from './src/screens/Login';
 import Home from './src/screens/Home';
 import NextScreen from './src/screens/NextScreen';
@@ -21,10 +23,19 @@ import AddWalk from './src/screens/AddWalk';
 import Settings from './src/screens/Settings';
 import CreateWalk from './src/screens/CreateWalk';
 import WalkData from './src/screens/WalkData';
+import Confirm from './src/screens/Confirm';
 import InitialSetupFirst from './src/screens/InitialSetupFirst';
 import LandingPage from './src/screens/LandingPage';
 
 var dataset = require("./src/data/mockdata.json");
+
+// const firebaseConfig = {
+//   apiKey: "<YOUR-API-KEY>",
+//   authDomain: "<YOUR-AUTH-DOMAIN>",
+//   databaseURL: "https://karavan-e5921.firebaseio.com/",
+//   storageBucket: "<YOUR-STORAGE-BUCKET>"
+// };
+// firebase.initializeApp(firebaseConfig);
 
 class KaravanProject extends Component {
   state = {
@@ -91,6 +102,9 @@ class KaravanProject extends Component {
         } else if (this.state.screenName == "WalkData") {
           return <WalkData onLogoutPress={() => this.setState({isLoggedIn: false})}
               navigateButton={(screenName) => this._navigateToNewScreen(screenName)} />
+        } else if (this.state.screenName == "Confirm") {
+          return <WalkData onLogoutPress={() => this.setState({isLoggedIn: false})}
+              navigateButton={(screenName) => this._navigateToNewScreen(screenName)} />
         }
       } else if (this.state.screenName == "Login") {
         return <Login onLoginPress={(object) => this._attemptLogin(object)} />;
@@ -103,4 +117,4 @@ class KaravanProject extends Component {
   }
 }
 
-AppRegistry.registerComponent('KaravanProject', () => KaravanProject);
+AppRegistry.registerComponent('KaravanProject', () => KaravanProject)

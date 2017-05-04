@@ -32,7 +32,7 @@ export default class CreateWalk extends Component {
   return (
     <View style={styles.container}>
       <View style={styles.banner}>
-        <Text style={styles.title}>Settings</Text>
+        <Text style={styles.title}>Create A Walk</Text>
       </View>
       <KeyboardAvoidingView style={styles.interactionContainer}>
         <View style={styles.inputFieldsContainer}>
@@ -62,9 +62,8 @@ export default class CreateWalk extends Component {
           />
            <Button 
               title="Create"
-              color=""
               accessibilityLabel="Create"
-              disabled={!this.state.username||!this.state.password}
+              onPress={this.props.navigateButton.bind(this, "Confirm")}
             />
           {/*<DatePickerIOS
             date={this.state.date}
