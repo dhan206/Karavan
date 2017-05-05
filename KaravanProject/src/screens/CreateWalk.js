@@ -40,12 +40,14 @@ export default class CreateWalk extends Component {
             style={styles.inputField}
             autoFocus={true}
             autoCorrect={false}
+            onChangeText={(username) => this.setState({username})}
             autoCapitalize="none"
             placeholder="Enter your Street Address"
           />
            <TextInput
             style={styles.inputField}
             autoCorrect={false}
+            onChangeText={(username) => this.setState({username})}
             placeholder="Enter School"
           />
            <TextInput

@@ -3,6 +3,7 @@
 import React, { Component } from 'react';
 import Icon from 'react-native-vector-icons';
 import Calendar from 'react-native-calendar';
+var walkDataset = require("../data/walkData.json");
 
 import {
   AppRegistry,
@@ -24,6 +25,14 @@ export default class Secured extends Component {
       return(" ")
     }
 
+    getData(walkDataset){
+      var data = [];
+      for(date in walkDataset){
+        data.append(date.date)
+      }
+      return data;
+    }
+
     render() {
     return (
       <View style={styles.container}>
@@ -35,8 +44,8 @@ export default class Secured extends Component {
             //currentMonth={}       // Optional date to set the currently displayed month after initialization
             customStyle={customStyle} // Customize any pre-defined styles
             //dayHeadings={Array}               // Default: ['S', 'M', 'T', 'W', 'T', 'F', 'S']
-            eventDates={['2015-07-01']}       // Optional array of moment() parseable dates that will show an event indicator
-            events={[{date:'2015-07-01'}]}// Optional array of event objects with a date property and custom styles for the event indicator
+            //eventDates={['2015-07-01']}       // Optional array of moment() parseable dates that will show an event indicator
+            events= {walkDataset} // Optional array of event objects with a date property and custom styles for the event indicator
             monthNames={Array}                // Defaults to english names of months
             nextButtonText={'>'}           // Text for next button. Default: 'Next'
             onDateSelect={(date) => this.onDateSelect(date)} // Callback after date selection
@@ -99,4 +108,7 @@ export default class Secured extends Component {
     calendarContainer: {backgroundColor: 'white', height:340, },
     day: {fontSize: 15, textAlign: 'center'},
     currentDayText: {color: 'blue', },
+    hasEventCircle:{
+      backgroundColor: "#52a48b"
+    }
   }
