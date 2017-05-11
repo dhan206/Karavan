@@ -20,9 +20,22 @@ import NavigationBar from '../parts/navigationbar';
 export default class Secured extends Component {
     constructor(){
       super();
+      this.state = {
+        eventText: ""
+      }
     }
+
     onDateSelect(date){ // grab information from a database and then store into an array that will be parsed and shown
-      return(" ")
+      alert(date);
+      for(var event in walkDataset){
+        if(date = event.date){
+          this.state.eventText = walkDataset.text;
+        }
+      }
+      if (this.state.eventText == ""){
+        this.state.eventText = "Nothing Scheduled Walking School Buses."
+      }
+      this.forceUpdate()
     }
 
     getData(walkDataset){
@@ -46,7 +59,7 @@ export default class Secured extends Component {
             //dayHeadings={Array}               // Default: ['S', 'M', 'T', 'W', 'T', 'F', 'S']
             //eventDates={['2015-07-01']}       // Optional array of moment() parseable dates that will show an event indicator
             events= {walkDataset} // Optional array of event objects with a date property and custom styles for the event indicator
-            monthNames={Array}                // Defaults to english names of months
+            //monthNames={Array}                // Defaults to english names of months
             nextButtonText={'>'}           // Text for next button. Default: 'Next'
             onDateSelect={(date) => this.onDateSelect(date)} // Callback after date selection
             onSwipeNext={this.onSwipeNext}    // Callback for forward swipe event
@@ -65,14 +78,9 @@ export default class Secured extends Component {
           />
         </View>
         <View>
-          <Text style={styles.title}>You Are Scheduled to be a Chaperone</Text>
+          <Text style={styles.title}>{this.state.eventText}</Text>
         </View>
-        {/*<MapView
-          style={styles.map}
-          showsUserLocation={true}
-          followUserLocation={true}
-          showCompass={true}
-        />*/}
+
           <View style={styles.navigation}>
           <View style={[styles.navigationButtonContainer, styles.navHomeButton]}>
             <Button 

@@ -1,3 +1,4 @@
-[{"date":"2017-05-11"}
-
+[
+    {"date":"2017-05-13T00:00:00-07:00", "chaperone":false, "name": "Fish Karavan", "startLong":47.6582496,"startLat":-122.2988492,"schoolLong":47.664099,"schoolLat":-122.331122, "text": "You are a chaperone on _______"},
+    {"date":"2017-05-17", "chaperone":true, "name": "Fish Karavan", "startLong":47.6582496,"startLat":-122.2988492,"schoolLong":47.664099,"schoolLat":-122.331122, "text": "You are droppung off two kids"}
 ]

@@ -150,7 +150,8 @@ container: {
     alignItems: 'center'
   },
   landingPageText: {
-    fontSize: 25,
+    fontSize: 20,
+    textAlign: "center",
     fontStyle: "italic",
     fontFamily: "Hiragino Sans",
     color: "white",
@@ -158,7 +159,7 @@ container: {
   },
   buttonContainerSignup: {
     backgroundColor: 'white',
-    color: "#1db0a2",
+    
     borderRadius: 5,
     alignSelf: 'stretch',
     paddingVertical: 10,
@@ -169,7 +170,7 @@ container: {
     },
     shadowRadius: 10,
     shadowOpacity: 0.25,
-    margin: 30
+    marginBottom: 20
   },
   buttonContainerLogin: {
     backgroundColor: '#1db0a2',
@@ -183,6 +184,5 @@ container: {
     },
     shadowRadius: 10,
     shadowOpacity: 0.25,
-    margin: 30
   }
 });

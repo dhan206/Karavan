@@ -67,10 +67,6 @@ export default class Login extends Component {
               disabled={this.state.isLoggingIn||!this.state.username||!this.state.password}
             />
           </View>
-          <Button
-            color="white"
-            title="Request Account"
-          />
         </KeyboardAvoidingView>
       </View>
     );
