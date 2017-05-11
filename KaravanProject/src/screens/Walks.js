@@ -29,8 +29,6 @@ export default class Walks extends Component {
     this.props.accountData;
   }
 
-  
-
   renderRow(rowData, sectionID, rowID) {
     return(
         <TouchableHighlight onPress={this.props.navigateButton.bind(this, "WalkData")}>
