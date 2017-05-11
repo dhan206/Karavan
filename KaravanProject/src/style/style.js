@@ -150,7 +150,8 @@ container: {
     alignItems: 'center'
   },
   landingPageText: {
-    fontSize: 25,
+    fontSize: 20,
+    textAlign: "center",
     fontStyle: "italic",
     fontFamily: "Hiragino Sans",
     color: "white",
