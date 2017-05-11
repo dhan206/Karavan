@@ -29,7 +29,7 @@ export default class LandingPage extends Component {
     return (
       <View style={styles.landingPageContainer}>
         <Image style={styles.logoStyle} source={karavanLogo} />
-        <Text style={styles.landingPageText}>Helping kids walk to school safely together.</Text>
+        <Text style={styles.landingPageText}>Helping kids walk to school together safely.</Text>
         <View style={styles.buttonContainerSignup}>
             <Button 
               title="Request an Account"
