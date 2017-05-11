@@ -15,37 +15,43 @@ import {
   Picker
 } from 'react-native';
 
+import ModalPicker from 'react-native-modal-picker'
+
 import styles from '../style/style.js';
 
-var schoolOptions = [
-    {label: "Seattle Elementary", value: "Seattle Elementary"},
-    {label: "Kent Elementary", value: "Kent Elementary"},
-    {label: "Bellevue Elementary", value: "Bellevue Elementary"},
-    {label: "Tacoma Elementary", value: "Tacoma Elementary"}
-]
-
 export default class InitialSetupFirst extends Component {
-    
-    state = {
-        firstName: "",
-        lastName: "",
-        email: "",
-        phoneNumber: "",
-        address: "",
-        schoolName: "Select School",
-        numberKids: "",
-        password: "",
-        repassword: ""
+    constructor(props) {
+        super(props);
+        this.state = {
+            // firstName: "",
+            // lastName: "",
+            username: "",
+            email: "",
+            // phoneNumber: "",
+            // address: "",
+            schoolName: "",
+            numberKids: "",
+            password: "",
+            // repassword: ""
+        }
     }
 
     render() {
+        let index = 0;
+        const data = [
+            { key: index++, section: true, label: 'Seattle District Elementary Schools' },
+            { key: index++, label: 'Dearborn Park Elementary' },
+            { key: index++, label: 'Maple Elementary' },
+            { key: index++, label: 'Wing Luke Elementary' },
+            { key: index++, label: 'Van Asselt Elementary' }
+        ];
         return (
             <View style={styles.container}>
                 <View style={styles.banner}> 
                     <Text style={styles.title}>Account Setup</Text>
                 </View>
                 <View style={{padding: 20}}>
-                    <TextInput 
+                    {/*<TextInput 
                     style={styles.inputField}
                     onChangeText={(input) => this.setState({firstName: input})}
                     autoFocus={true}
@@ -55,14 +61,21 @@ export default class InitialSetupFirst extends Component {
                     style={styles.inputField}
                     onChangeText={(input) => this.setState({lastName: input})}
                     autoCorrect={false}
-                    placeholder="Parent Last Name"/>
+                    placeholder="Parent Last Name"/>*/}
+                    <TextInput 
+                    style={styles.inputField}
+                    onChangeText={(input) => this.setState({username: input})}
+                    autoCorrect={false}
+                    autoFocus={true}
+                    autoCapitalize="none"
+                    placeholder="Username"/>
                     <TextInput 
                     style={styles.inputField}
                     onChangeText={(input) => this.setState({email: input})}
                     autoCorrect={false}
                     autoCapitalize="none"
                     placeholder="Email"/>
-                    <TextInput 
+                    {/*<TextInput 
                     style={styles.inputField}
                     onChangeText={(input) => this.setState({phoneNumber: input})}
                     autoCorrect={false}
@@ -71,8 +84,8 @@ export default class InitialSetupFirst extends Component {
                     style={styles.inputField}
                     onChangeText={(input) => this.setState({address: input})}
                     autoCorrect={false}
-                    placeholder="Street Address"/>
-                    <Picker 
+                    placeholder="Street Address"/>*/}
+                    {/*<Picker 
                         style={{ flex: 1 }}
                         selectedValue={this.state.schoolName}
                         onValueChange={(value) => this.setState({schoolName: value})} >
@@ -80,7 +93,26 @@ export default class InitialSetupFirst extends Component {
                         <Picker.Item label="Kent Elementary" value="Kent Elementary" />
                         <Picker.Item label="Bellevue Elementary" value="Bellevue Elementary" />
                         <Picker.Item label="Tacoma Elementary" value="Tacoma Elementary" />
-                    </Picker>
+                    </Picker>*/}
+                    {/*<View style={{flex:1, justifyContent:'space-around', paddingVertical: 10}}>
+                        <ModalPicker
+                            data={data}
+                            initValue="Select something yummy!"
+                            onChange={(option) => {  }} />
+        
+                        <ModalPicker
+                            data={data}
+                            initValue="Select something yummy!"
+                            onChange={(option)=>{ this.setState({textInputValue:option.label})}}>
+                            
+                            <TextInput
+                                style={{borderWidth:1, borderColor:'#ccc', padding:10, height:30}}
+                                editable={false}
+                                placeholder="Select something yummy!"
+                                value={this.state.textInputValue} />
+                                
+                        </ModalPicker>
+                    </View>*/}
                     <TextInput 
                         style={styles.inputField}
                         keyboardType = 'numeric'
@@ -96,14 +128,26 @@ export default class InitialSetupFirst extends Component {
                         secureTextEntry={true}
                         placeholder = "Password"
                         />
-                    <TextInput
+                    {/*<TextInput
                         style={styles.inputField}
                         autoCapitalize="none"
                         autoCorrect={false}
                         onChangeText = {(input) => this.setState({repassword: input})}
                         secureTextEntry={true}
                         placeholder = "Re-enter Password"
+                        />*/}
+                    <View style={styles.requestAccountButtonContainer}>
+                        <Button 
+                        title="Request Account"
+                        color="#ffffff"
+                        accessibilityLabel="Account login button"
+                        onPress={this.props.onRequestAccountPress.bind(this, this.state)}
+                        disabled={!this.state.username||!this.state.password}
                         />
+                    </View>
+                    <Text>
+                        
+                    </Text>
                 </View>
             </View>
         );
