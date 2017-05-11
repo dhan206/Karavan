@@ -25,7 +25,7 @@ export default class Login extends Component {
       username: '',
       password: '',
       message: '',
-      isLoggingIn: false
+      behavior: 'padding'
     };
   }
 
@@ -37,7 +37,7 @@ export default class Login extends Component {
             style={styles.logoStyle}
             source={karavanLogo} />
         </View>
-        <KeyboardAvoidingView style={styles.interactionContainer}>
+        <KeyboardAvoidingView behavior={this.state.behavior} style={styles.interactionContainer}>
           <View style={styles.inputFieldsContainer}>
             <TextInput
               style={styles.inputField}
@@ -64,7 +64,7 @@ export default class Login extends Component {
               color="white"
               accessibilityLabel="Account login button"
               onPress={this.props.onLoginPress.bind(this, this.state)}
-              disabled={this.state.isLoggingIn||!this.state.username||!this.state.password}
+              disabled={!this.state.username||!this.state.password}
             />
           </View>
         </KeyboardAvoidingView>

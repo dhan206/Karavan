@@ -80,7 +80,15 @@ export default class Secured extends Component {
         <View>
           <Text style={styles.title}>{this.state.eventText}</Text>
         </View>
-
+        {/*<MapView
+          style={styles.map}
+          showsUserLocation={true}
+          followUserLocation={true}
+          showCompass={true}
+        />*/}
+        <View>
+          <Text style={styles.title}>{this.props.account}</Text>
+        </View>
           <View style={styles.navigation}>
           <View style={[styles.navigationButtonContainer, styles.navHomeButton]}>
             <Button 

@@ -20,16 +20,14 @@ var example = ["May 21, 2017", "March 22, 2017", "March 23, 2017", "M
 var walkDataset = require("../data/walkData.json");
 
 export default class Walks extends Component {
-
   constructor() {
     super();
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     this.state = {
       dataSource: ds.cloneWithRows(walkDataset.date),
     }
+    this.props.accountData;
   }
-
-  
 
   renderRow(rowData, sectionID, rowID) {
     return(
@@ -41,7 +39,7 @@ export default class Walks extends Component {
                 source={{uri: 'http://www.clker.com/cliparts/V/1/Z/A/h/U/left-arrow-right-hi.png'}}
                 />
             </View>
-            </TouchableHighlight>
+      </TouchableHighlight>
     )
   }
 
