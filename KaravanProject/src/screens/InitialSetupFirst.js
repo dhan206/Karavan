@@ -27,24 +27,16 @@ export default class InitialSetupFirst extends Component {
             // lastName: "",
             username: "",
             email: "",
-            // phoneNumber: "",
-            // address: "",
-            schoolName: "",
-            numberKids: "",
+            phone: "",
+            address: "",
+            // schoolName: "",
+            // numberKids: "",
             password: "",
             // repassword: ""
         }
     }
 
     render() {
-        let index = 0;
-        const data = [
-            { key: index++, section: true, label: 'Seattle District Elementary Schools' },
-            { key: index++, label: 'Dearborn Park Elementary' },
-            { key: index++, label: 'Maple Elementary' },
-            { key: index++, label: 'Wing Luke Elementary' },
-            { key: index++, label: 'Van Asselt Elementary' }
-        ];
         return (
             <View style={styles.container}>
                 <View style={styles.banner}> 
@@ -75,16 +67,17 @@ export default class InitialSetupFirst extends Component {
                     autoCorrect={false}
                     autoCapitalize="none"
                     placeholder="Email"/>
-                    {/*<TextInput 
+                    <TextInput 
                     style={styles.inputField}
-                    onChangeText={(input) => this.setState({phoneNumber: input})}
+                    onChangeText={(input) => this.setState({phone: input})}
                     autoCorrect={false}
+                    keyboardType = 'numeric'
                     placeholder="Phone Number"/>
                     <TextInput 
                     style={styles.inputField}
                     onChangeText={(input) => this.setState({address: input})}
                     autoCorrect={false}
-                    placeholder="Street Address"/>*/}
+                    placeholder="Street Address"/>
                     {/*<Picker 
                         style={{ flex: 1 }}
                         selectedValue={this.state.schoolName}
@@ -113,13 +106,13 @@ export default class InitialSetupFirst extends Component {
                                 
                         </ModalPicker>
                     </View>*/}
-                    <TextInput 
+                    {/*<TextInput 
                         style={styles.inputField}
                         keyboardType = 'numeric'
                         onChangeText = {(input) => this.setState({numberKids: input})}
                         placeholder="Number of Kids"
                         maxLength = {1}  //setting limit of input
-                        />
+                        />*/}
                     <TextInput
                         style={styles.inputField}
                         autoCapitalize="none"
@@ -140,7 +133,7 @@ export default class InitialSetupFirst extends Component {
                         <Button 
                         title="Request Account"
                         color="#ffffff"
-                        accessibilityLabel="Account login button"
+                        accessibilityLabel="Account Request Button"
                         onPress={this.props.onRequestAccountPress.bind(this, this.state)}
                         disabled={!this.state.username||!this.state.password}
                         />
