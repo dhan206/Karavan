@@ -13,31 +13,31 @@ import {
   TouchableHighlight,
   Image
 } from 'react-native';
-
+import Moment from 'moment';
 import styles from '../style/style.js';
 
-var example = ["May 21, 2017", "March 22, 2017", "March 23, 2017", "March 30, 2017"]
-var walkDataset = require("../data/walkData.json");
+// var example = ["May 21, 2017", "March 22, 2017", "March 23, 2017", "March 30, 2017"]
 
 export default class Walks extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-    this.state = {
-      dataSource: ds.cloneWithRows(walkDataset.date),
+
+    var listWalks = []
+    for(var event of this.props.walks) {
+      listWalks.push(Moment(event.date).format('ddd[,] MMM DD') + " : " + event.name);
+    }
+
+    this.state = {
+      dataSource: ds.cloneWithRows(listWalks),
     }
-    this.props.accountData;
   }
 
   renderRow(rowData, sectionID, rowID) {
     return(
-        <TouchableHighlight onPress={this.props.navigateButton.bind(this, "WalkData")}>
+        <TouchableHighlight onPress={this.props.selectedWalk.bind(this, rowData)}>
             <View style={styles.row}>
                 <Text style={styles.rowText}>{rowData}</Text>
-                <Image
-                style={styles.walkArrow}
-                source={{uri: 'http://www.clker.com/cliparts/V/1/Z/A/h/U/left-arrow-right-hi.png'}}
-                />
             </View>
       </TouchableHighlight>
     )
@@ -55,7 +55,7 @@ export default class Walks extends Component {
           renderRow={this.renderRow.bind(this)}
           />
         </View>
-        <View style={[styles.loginButtonContainer, styles.createWalkButton]}>
+        <View style={styles.buttonContainerCreateWalk}>
           <Button 
             onPress={this.props.navigateButton.bind(this, "CreateWalk")}
             title="Create A Walk"

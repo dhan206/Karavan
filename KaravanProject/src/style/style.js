@@ -96,6 +96,12 @@ container: {
     padding: 20,
     marginBottom: 100
   },
+  interactionContainerCreateWak: {
+    alignSelf: 'auto',
+    //borderRadius: 5,
+    padding: 20,
+    marginBottom: 100
+  },
   loginButtonContainer: {
     backgroundColor: '#1db0a2',
     borderRadius: 5,
@@ -118,6 +124,16 @@ container: {
     backgroundColor: '#ffffff',
     borderColor: 'black'
   },
+  inputFieldCreateWalk: {
+    height: 50,
+    marginBottom: 1,
+    paddingHorizontal: 10,
+    borderRadius: 1,
+    color: 'black',
+    backgroundColor: '#ffffff',
+    borderColor: 'black',
+    margin: 10
+  },
   loginMessage: {
     color: 'red',
     marginBottom: 10
@@ -128,8 +144,10 @@ container: {
   row: {
     flexDirection: 'row',
     justifyContent: 'flex-start',
-    padding: 10,
+    padding: 18,
     backgroundColor: '#FFFFFF',
+    borderColor: 'darkgray',
+    borderWidth: .5,
   },
   walkArrow: {
     height: 30,
@@ -137,10 +155,14 @@ container: {
     alignItems: 'flex-end'
   },
   walkData: {
-    fontSize: 25,
-    fontWeight: 'bold',
-    textAlign: 'center',
+    padding: 10,
+    fontSize: 20,
+    textAlign: 'left',
     color: 'white'
+  },
+  walkDataLabel: {
+    fontWeight: 'bold',
+    color: 'lightgray'
   },
   landingPageContainer: {
     backgroundColor: "#2980b9",
@@ -185,6 +207,20 @@ container: {
     shadowRadius: 10,
     shadowOpacity: 0.25,
   },
+  buttonContainerCreateWalk: {
+    backgroundColor: '#1db0a2',
+    borderRadius: 5,
+    margin: 10,
+    alignSelf: 'stretch',
+    paddingVertical: 10,
+    shadowColor: '#000000',
+    shadowOffset: {
+      width: 0,
+      height: 3
+    },
+    shadowRadius: 10,
+    shadowOpacity: 0.25,
+  },
   requestAccountButtonContainer: {
     backgroundColor: '#1db0a2',
     borderRadius: 5,
@@ -198,5 +234,10 @@ container: {
     shadowRadius: 10,
     shadowOpacity: 0.25,
     marginTop: 25
+  },
+  underCalendarText: {
+    padding: 10,
+    fontSize: 18,
+    color: 'white'
   }
 });

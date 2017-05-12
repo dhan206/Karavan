@@ -18,11 +18,22 @@ import styles from '../style/style.js';
 
 export default class WalkData extends Component {
 
-  constructor() {
-      super();
-      const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-      this.state = {
-      }
+  constructor(props) {
+    super(props);
+    for(var walk of this.props.walks) {
+      if (walk.name == this.props.selectedWalk.split(" : ")[1]) {
+        var foundAddress = walk.address;
+        var foundChaperone = walk.chaperone;
+        var foundPhone = walk.phone;
+      }
+    }
+    this.state = {
+      selectedWalk: this.props.selectedWalk,
+      name: this.props.selectedWalk.split(" : ")[1],
+      address: foundAddress,
+      phone: foundPhone,
+      chaperone: foundChaperone
+    }
   }
 
 
@@ -31,7 +42,7 @@ render() {
       <View style={styles.container}>
 
         <View style={styles.banner}> 
-          <Text style={styles.title}>March 21, 2017</Text>
+          <Text style={styles.title}>{this.state.selectedWalk}</Text>
         </View>
 
         <MapView
@@ -41,9 +52,10 @@ render() {
           showCompass={true}
         />
 
-        <View>
-            <Text style={styles.walkData}>Scheduled Stop: 14th & Pine</Text>
-            <Text style={styles.walkData}>Scheduled Time: 7:35 AM</Text>
+        <View style={{padding: 10}}>
+            <Text style={styles.walkData}><Text style={styles.walkDataLabel}>Chaperone:</Text> {this.state.chaperone}</Text>
+            <Text style={styles.walkData}><Text style={styles.walkDataLabel}>Departure:</Text> {this.state.address}</Text>
+            <Text style={styles.walkData}><Text style={styles.walkDataLabel}>Phone Num:</Text> {this.state.phone}</Text>
         </View>
 
           <View style={styles.navigation}>

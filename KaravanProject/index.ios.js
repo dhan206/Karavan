@@ -18,9 +18,7 @@ import {
 
 import Login from './src/screens/Login';
 import Home from './src/screens/Home';
-import NextScreen from './src/screens/NextScreen';
 import Walks from './src/screens/Walks';
-import AddWalk from './src/screens/AddWalk';
 import Settings from './src/screens/Settings';
 import CreateWalk from './src/screens/CreateWalk';
 import WalkData from './src/screens/WalkData';
@@ -29,6 +27,7 @@ import InitialSetupFirst from './src/screens/InitialSetupFirst';
 import LandingPage from './src/screens/LandingPage';
 
 var accountData = require('./src/data/accountdata.json');
+var walkData = require('./src/data/walkData.json');
 
 // const firebaseConfig = {
 //   apiKey: "<YOUR-API-KEY>",
@@ -43,8 +42,11 @@ class KaravanProject extends Component {
     isLoggedIn: false,
     userObject: null,
     showLandingPage: true,
-    accountUsername: "",
-    screenName: ""
+    accountUsername: '',
+    accountPhoneNumber: '',
+    accountAddress: '',
+    screenName: '',
+    selectedWalk: null
   }
 
   _attemptLogin = (object) => {
@@ -52,8 +54,10 @@ class KaravanProject extends Component {
       if(person.username == object.username) {
         if(person.password == object.password) {
           this.setState({ isLoggedIn: true });
-          this.setState({accountUsername: person.username});
-          this.setState({ screenName: "Home"});
+          this.setState({ accountUsername: person.username });
+          this.setState({ accountPhoneNumber: person.phone });
+          this.setState({ accountAddress: person.address });
+          this.setState({ screenName: "Home" });
           this.setState({ userObject: object })
           this._securityLoop();
         } else {
@@ -89,14 +93,19 @@ class KaravanProject extends Component {
 
   _requestAccount = (account) => {
     accountData.push(account);
-    Alert.alert("For this demo, you're account has been verified! Please login.");
+    Alert.alert("For this demo, your account has been verified! Please login.");
     this.setState({screenName: 'Login'});
   } 
 
   _addWalk = (walk) => {
     walkData.push(walk);
-    Alert.alert("You're walk has been added!");
+    Alert.alert("Your walk has been added!");
     this.setState({screenName: "Walks"});
+  }
+
+  _showWalkDataFor = (walk) => {
+    this.setState({selectedWalk: walk});
+    this._navigateToNewScreen("WalkData");
   }
 
   render() {
@@ -105,24 +114,23 @@ class KaravanProject extends Component {
     } else {
       if (this.state.isLoggedIn) {
         if (this.state.screenName == "Home") {          
-          return <Home account={accountData} navigateButton={(screenName) => this._navigateToNewScreen(screenName)} />
-        } else if (this.state.screenName == "Map") {
-          return <NextScreen navigateButton={(screenName) => this._navigateToNewScreen(screenName)} />
+          return <Home user={this.state.accountUsername} walks={walkData} navigateButton={(screenName) => this._navigateToNewScreen(screenName)} />
         } else if (this.state.screenName == "Walks") {
-          return <Walks navigateButton={(screenName) => this._navigateToNewScreen(screenName)} />
-        } else if (this.state.screenName == "AddWalks") {
-          return <Walks navigateButton={(screenName) => this._navigateToNewScreen(screenName)} />
+          return <Walks walks={walkData} 
+            selectedWalk={(walk) => this._showWalkDataFor(walk)}
+            navigateButton={(screenName) => this._navigateToNewScreen(screenName)} />
         } else if (this.state.screenName == "Settings") {
           return <Settings onLogoutPress={() => {this.setState({isLoggedIn: false}); this.setState({screenName: "LandingPage"})}}
               navigateButton={(screenName) => this._navigateToNewScreen(screenName)} />
         } else if (this.state.screenName == "CreateWalk") {
-          return <CreateWalk onLogoutPress={() => this.setState({isLoggedIn: false})}
+          return <CreateWalk user={this.state.accountUsername} phone={this.state.accountPhoneNumber} address={this.state.accountAddress}
+              walks={walkData} onAddWalk={(newWalk) => this._addWalk(newWalk)} onLogoutPress={() => this.setState({isLoggedIn: false})}
               navigateButton={(screenName) => this._navigateToNewScreen(screenName)} />
         } else if (this.state.screenName == "WalkData") {
-          return <WalkData onLogoutPress={() => this.setState({isLoggedIn: false})}
+          return <WalkData walks={walkData} selectedWalk={this.state.selectedWalk} onLogoutPress={() => this.setState({isLoggedIn: false})}
               navigateButton={(screenName) => this._navigateToNewScreen(screenName)} />
         } else if (this.state.screenName == "Confirm") {
-          return <WalkData onLogoutPress={() => this.setState({isLoggedIn: false})}
+          return <WalkData walks={walkData} onLogoutPress={() => this.setState({isLoggedIn: false})}
               navigateButton={(screenName) => this._navigateToNewScreen(screenName)} />
         }
       } else if (this.state.screenName == "Login") {

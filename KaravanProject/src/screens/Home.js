@@ -3,7 +3,8 @@
 import React, { Component } from 'react';
 import Icon from 'react-native-vector-icons';
 import Calendar from 'react-native-calendar';
-var walkDataset = require("../data/walkData.json");
+import styles from '../style/style.js';
+import NavigationBar from '../parts/navigationbar';
 
 import {
   AppRegistry,
@@ -14,43 +15,42 @@ import {
   MapView
 } from 'react-native';
 
-import styles from '../style/style.js';
-import NavigationBar from '../parts/navigationbar';
+import Moment from 'moment';
 
 export default class Secured extends Component {
     constructor(){
       super();
       this.state = {
-        eventText: ""
+        eventText: '',
+        callText: ''
       }
     }
 
-    onDateSelect(date){ // grab information from a database and then store into an array that will be parsed and shown
-      alert(date);
-      for(var event in walkDataset){
-        if(date = event.date){
-          this.state.eventText = walkDataset.text;
+    onDateSelect(date) { // grab information from a database and then store into an array that will be parsed and shown
+      var clickedOnScheduledEvent = false;
+      for(var event of this.props.walks){
+        if(date == event.date){
+          if(event.chaperone == this.props.user) {
+            this.setState({eventText: "You are scheduled to chaperone the " + event.name + " on " + Moment(date).format('ddd[,] MMM DD')})
+            this.setState({callText: ''});
+          } else {
+            this.setState({eventText: "The " + event.name + " is scheduled to leave " + event.address + " lead by " + event.chaperone})
+            this.setState({callText: "If you would like to join this walk " + event.chaperone + " can be contacted at " + event.phone})
+          }
+          clickedOnScheduledEvent = true;
         }
       }
-      if (this.state.eventText == ""){
-        this.state.eventText = "Nothing Scheduled Walking School Buses."
+      if (!clickedOnScheduledEvent) {
+        Moment.locale('en');
+        this.setState({eventText: "No walks are scheduled for " + Moment(date).format('ddd[,] MMM DD') + ". Would you like to create a walk?"});
       }
-      this.forceUpdate()
-    }
-
-    getData(walkDataset){
-      var data = [];
-      for(date in walkDataset){
-        data.append(date.date)
-      }
-      return data;
     }
 
     render() {
     return (
       <View style={styles.container}>
         <View style={styles.banner}>
-          <Text style={styles.title}>Home</Text>
+          <Text style={styles.title}>Welcome, {this.props.user}!</Text>
         </View>
         <View>
           <Calendar
@@ -58,7 +58,7 @@ export default class Secured extends Component {
             customStyle={customStyle} // Customize any pre-defined styles
             //dayHeadings={Array}               // Default: ['S', 'M', 'T', 'W', 'T', 'F', 'S']
             //eventDates={['2015-07-01']}       // Optional array of moment() parseable dates that will show an event indicator
-            events= {walkDataset} // Optional array of event objects with a date property and custom styles for the event indicator
+            events= {this.props.walks} // Optional array of event objects with a date property and custom styles for the event indicator
             //monthNames={Array}                // Defaults to english names of months
             nextButtonText={'>'}           // Text for next button. Default: 'Next'
             onDateSelect={(date) => this.onDateSelect(date)} // Callback after date selection
@@ -78,18 +78,10 @@ export default class Secured extends Component {
           />
         </View>
         <View>
-          <Text style={styles.title}>{this.state.eventText}</Text>
+          <Text style={styles.underCalendarText}>{this.state.eventText}</Text>
+          <Text style={styles.underCalendarText}>{this.state.callText}</Text>
         </View>
-        {/*<MapView
-          style={styles.map}
-          showsUserLocation={true}
-          followUserLocation={true}
-          showCompass={true}
-        />*/}
-        <View>
-          <Text style={styles.title}>{this.props.account}</Text>
-        </View>
-          <View style={styles.navigation}>
+        <View style={styles.navigation}>
           <View style={[styles.navigationButtonContainer, styles.navHomeButton]}>
             <Button 
               color='#ffffff'
@@ -121,9 +113,10 @@ export default class Secured extends Component {
 }
 
   const customStyle = {
-    calendarContainer: {backgroundColor: 'white', height:340, },
+    calendarContainer: {backgroundColor: 'white', height:340},
     day: {fontSize: 15, textAlign: 'center'},
-    currentDayText: {color: 'blue', },
+    calendarControls: {backgroundColor: 'lightgray' },
+    currentDayText: {color: 'blue'},
     hasEventCircle:{
       backgroundColor: "#52a48b"
     }
