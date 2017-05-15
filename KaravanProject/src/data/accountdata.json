@@ -1,4 +1,4 @@
-[{"username":"Derek","password":"password","first_name":"Derek","last_name":"Han","email":"dhan206@uw.edu", "address":"123 1st Ave Seattle, WA", "phone":"(206)123-4567"},
-{"username":"Kendall","password":"password","first_name":"Kendall","last_name":"Reonal","email":"kreonal@uw.edu", "address":"213 2nd Ave Seattle, WA", "phone":"(253)246-8101"},
-{"username":"Michael","password":"password","first_name":"Michael","last_name":"Nguyen","email":"nguyenmic@uw.edu", "address":"412 4th Ave Seattle, WA", "phone":"(253)135-7911"},
-{"username":"Andrew","password":"password","first_name":"Andrew","last_name":"Kyrios","email":"kyrios@uw.edu", "address":"321 3rd Ave Seattle, WA", "phone":"(425)098-7654"}]
+[{"username":"Derek","password":"password","first_name":"Derek","last_name":"Han","email":"dhan206@uw.edu", "address":"123 1st Ave Seattle, WA", "phone":"2061234567"},
+{"username":"Kendall","password":"password","first_name":"Kendall","last_name":"Reonal","email":"kreonal@uw.edu", "address":"213 2nd Ave Seattle, WA", "phone":"2532468101"},
+{"username":"Michael","password":"password","first_name":"Michael","last_name":"Nguyen","email":"nguyenmic@uw.edu", "address":"412 4th Ave Seattle, WA", "phone":"2531357911"},
+{"username":"Andrew","password":"password","first_name":"Andrew","last_name":"Kyrios","email":"kyrios@uw.edu", "address":"321 3rd Ave Seattle, WA", "phone":"4250987654"}]

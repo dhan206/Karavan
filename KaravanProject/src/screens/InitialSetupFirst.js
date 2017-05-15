@@ -72,6 +72,7 @@ export default class InitialSetupFirst extends Component {
                     onChangeText={(input) => this.setState({phone: input})}
                     autoCorrect={false}
                     keyboardType = 'numeric'
+                    maxLength = {10}
                     placeholder="Phone Number"/>
                     <TextInput 
                     style={styles.inputField}
