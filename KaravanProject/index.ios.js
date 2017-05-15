@@ -10,7 +10,8 @@ import React, { Component } from 'react';
 import {
   AppRegistry,
   Alert,
-  TimerMixin
+  TimerMixin,
+  Image
 } from 'react-native';
 
 
@@ -25,9 +26,13 @@ import WalkData from './src/screens/WalkData';
 import Confirm from './src/screens/Confirm';
 import InitialSetupFirst from './src/screens/InitialSetupFirst';
 import LandingPage from './src/screens/LandingPage';
+import Onboarding from 'react-native-simple-onboarding';
 
 var accountData = require('./src/data/accountdata.json');
 var walkData = require('./src/data/walkData.json');
+var karavanLogo = require('./src/img/logo.png');
+
+import styles from './src/style/style.js';
 
 // const firebaseConfig = {
 //   apiKey: "<YOUR-API-KEY>",
@@ -37,6 +42,8 @@ var walkData = require('./src/data/walkData.json');
 // };
 // firebase.initializeApp(firebaseConfig);
 
+const KaravanLogo = ()  => <Image style={styles.logoStyle} source={karavanLogo} />;
+            
 class KaravanProject extends Component {
   state = {
     isLoggedIn: false,
@@ -46,7 +53,8 @@ class KaravanProject extends Component {
     accountPhoneNumber: '',
     accountAddress: '',
     screenName: '',
-    selectedWalk: null
+    selectedWalk: null,
+    showOnBoarding: true
   }
 
   _attemptLogin = (object) => {
@@ -79,7 +87,7 @@ class KaravanProject extends Component {
             'Security Assurance', 'Logged out after 5 minutes.',
             [
               {text: "(@) Fingerprint", onPress: () => this._securityLoop()},
-              {text: "Close", onPress: () => this.setState({ isLoggedIn: false, screenName: "LandingPage" })}
+              {text: "Logout", onPress: () => this.setState({ isLoggedIn: false, screenName: "LandingPage" })}
             ],
             { cancelable: false }
           );
@@ -108,9 +116,22 @@ class KaravanProject extends Component {
     this._navigateToNewScreen("WalkData");
   }
 
+  _onBoarded = () => {
+    this.setState({showOnBoarding: false});
+  }
+
   render() {
     if (this.state.showLandingPage) {
-      return <LandingPage navigateButton={(screenName) => {this._navigateToNewScreen(screenName); this.setState({showLandingPage: false})}} />
+      if(this.state.showOnBoarding) {
+        return <Onboarding
+                pages={[
+                  { backgroundColor: '#2980b9', image: <KaravanLogo />, title: 'Welcome to Karavan!', subtitle: 'Let us' },
+                ]}
+                onEnd={() => this._onBoarded()}
+              />
+      } else {
+        return <LandingPage navigateButton={(screenName) => {this._navigateToNewScreen(screenName); this.setState({showLandingPage: false})}} />
+      }
     } else {
       if (this.state.isLoggedIn) {
         if (this.state.screenName == "Home") {          

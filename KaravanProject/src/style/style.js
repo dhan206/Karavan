@@ -93,13 +93,13 @@ container: {
   interactionContainer: {
     alignSelf: 'auto',
     //borderRadius: 5,
-    padding: 20,
+    padding: 10,
     marginBottom: 100
   },
   interactionContainerCreateWak: {
     alignSelf: 'auto',
     //borderRadius: 5,
-    padding: 20,
+    padding: 10,
     marginBottom: 100
   },
   loginButtonContainer: {
@@ -155,7 +155,8 @@ container: {
     alignItems: 'flex-end'
   },
   walkData: {
-    padding: 10,
+    marginHorizontal: 10,
+    marginVertical: 5,
     fontSize: 20,
     textAlign: 'left',
     color: 'white'
@@ -239,5 +240,9 @@ container: {
     padding: 10,
     fontSize: 18,
     color: 'white'
+  },
+  createWalkForm: {
+    backgroundColor: '#2980b9',
+    borderRadius: 5
   }
 });

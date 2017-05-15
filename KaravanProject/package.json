@@ -13,10 +13,10 @@
     "react": "15.4.2",
     "react-native": "0.42.3",
     "react-native-calendar": "^0.11.0",
+    "react-native-communications": "^2.2.1",
     "react-native-fs": "^2.3.2",
-    "react-native-modal-picker": "0.0.16",
     "react-native-navigation-bar": "^0.2.1",
-    "react-native-vector-icons": "^4.1.0"
+    "react-native-simple-onboarding": "^0.1.1"
   },
   "devDependencies": {
     "babel-jest": "19.0.0",

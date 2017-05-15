@@ -1,6 +1,6 @@
 [
-    {"date":"2017-05-15T00:00:00-07:00", "name": "Dog Karavan", "chaperone":"Derek", "address":"123 1st Ave Seattle, WA", "phone":"(206)123-4567"},
-    {"date":"2017-05-17T00:00:00-07:00", "name": "Fish Karavan", "chaperone":"Kendall", "address":"213 2nd Ave Seattle, WA", "phone":"(253)246-8101"},
-    {"date":"2017-05-19T00:00:00-07:00", "name": "Platypus Karavan", "chaperone":"Andrew", "address":"321 3rd Ave Seattle, WA", "phone":"(425)098-7654"},
-    {"date":"2017-05-23T00:00:00-07:00", "name": "Rabbit Karavan", "chaperone":"Michael", "address":"412 4th Ave Seattle, WA", "phone":"(253)135-7911"}
+    {"date":"2017-05-15T00:00:00-07:00", "name": "Dog Karavan", "chaperone":"Derek", "address":"123 Ellis St San Francisco, CA", "phone":"2061234567"},
+    {"date":"2017-05-17T00:00:00-07:00", "name": "Fish Karavan", "chaperone":"Kendall", "address":"213 2nd Ave Seattle, WA", "phone":"2532468101"},
+    {"date":"2017-05-19T00:00:00-07:00", "name": "Platypus Karavan", "chaperone":"Andrew", "address":"321 3rd Ave Seattle, WA", "phone":"4250987654"},
+    {"date":"2017-05-23T00:00:00-07:00", "name": "Rabbit Karavan", "chaperone":"Michael", "address":"412 4th Ave Seattle, WA", "phone":"2531357911"}
 ]

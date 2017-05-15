@@ -5,6 +5,7 @@ import Icon from 'react-native-vector-icons';
 import Calendar from 'react-native-calendar';
 import styles from '../style/style.js';
 import NavigationBar from '../parts/navigationbar';
+import Moment from 'moment';
 
 import {
   AppRegistry,
@@ -15,14 +16,14 @@ import {
   MapView
 } from 'react-native';
 
-import Moment from 'moment';
-
 export default class Secured extends Component {
     constructor(){
       super();
       this.state = {
         eventText: '',
-        callText: ''
+        callText: '',
+        joinWalk: false,
+        createWalk: false
       }
     }
 
@@ -33,9 +34,13 @@ export default class Secured extends Component {
           if(event.chaperone == this.props.user) {
             this.setState({eventText: "You are scheduled to chaperone the " + event.name + " on " + Moment(date).format('ddd[,] MMM DD')})
             this.setState({callText: ''});
+            this.setState({joinWalk: false});
+            this.setState({createWalk: false});
           } else {
             this.setState({eventText: "The " + event.name + " is scheduled to leave " + event.address + " lead by " + event.chaperone})
             this.setState({callText: "If you would like to join this walk " + event.chaperone + " can be contacted at " + event.phone})
+            this.setState({joinWalk: true});
+            this.setState({createWalk: false});
           }
           clickedOnScheduledEvent = true;
         }
@@ -43,6 +48,19 @@ export default class Secured extends Component {
       if (!clickedOnScheduledEvent) {
         Moment.locale('en');
         this.setState({eventText: "No walks are scheduled for " + Moment(date).format('ddd[,] MMM DD') + ". Would you like to create a walk?"});
+        this.setState({callText: ''});
+        this.setState({createWalk: true});
+        this.setState({joinWalk: false});
+      }
+    }
+
+    _showCallToAction() {
+      if (this.state.joinWalk) {
+
+      } else if (this.state.createWalk) {
+
+      } else {
+        return null;
       }
     }
 
@@ -80,6 +98,9 @@ export default class Secured extends Component {
         <View>
           <Text style={styles.underCalendarText}>{this.state.eventText}</Text>
           <Text style={styles.underCalendarText}>{this.state.callText}</Text>
+        </View>
+        <View>
+          {this._showCallToAction()}
         </View>
         <View style={styles.navigation}>
           <View style={[styles.navigationButtonContainer, styles.navHomeButton]}>

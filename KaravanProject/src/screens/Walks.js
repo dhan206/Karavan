@@ -13,6 +13,7 @@ import {
   TouchableHighlight,
   Image
 } from 'react-native';
+
 import Moment from 'moment';
 import styles from '../style/style.js';
 
@@ -49,11 +50,11 @@ export default class Walks extends Component {
         <View style={styles.banner}> 
           <Text style={styles.title}>Walks</Text>
         </View>
-        <View >
-        <ListView
-          dataSource={this.state.dataSource}
-          renderRow={this.renderRow.bind(this)}
-          />
+        <View>
+          <ListView
+            dataSource={this.state.dataSource}
+            renderRow={this.renderRow.bind(this)}
+            />
         </View>
         <View style={styles.buttonContainerCreateWalk}>
           <Button 
