@@ -6,6 +6,7 @@ import Calendar from 'react-native-calendar';
 import styles from '../style/style.js';
 import NavigationBar from '../parts/navigationbar';
 import Moment from 'moment';
+import Communications from 'react-native-communications';
 
 import {
   AppRegistry,
@@ -13,17 +14,28 @@ import {
   Text,
   View,
   Button,
-  MapView
+  MapView,
+  TouchableOpacity,
+  KeyboardAvoidingView,
+  TextInput,
+  Alert
 } from 'react-native';
 
 export default class Secured extends Component {
-    constructor(){
-      super();
+    constructor(props){
+      super(props);
       this.state = {
         eventText: '',
-        callText: '',
         joinWalk: false,
-        createWalk: false
+        createWalk: false,
+        phoneNumber: '',
+        chaperone: '',
+        date: '',
+        walkName: '',
+        behavior: 'position',
+        name: '',
+        address: this.props.address,
+        phone: this.props.phone
       }
     }
 
@@ -32,13 +44,15 @@ export default class Secured extends Component {
       for(var event of this.props.walks){
         if(date == event.date){
           if(event.chaperone == this.props.user) {
-            this.setState({eventText: "You are scheduled to chaperone the " + event.name + " on " + Moment(date).format('ddd[,] MMM DD')})
-            this.setState({callText: ''});
+            this.setState({eventText: "You are scheduled to chaperone the " + event.name + " on " + Moment(date).format('ddd[,] MMM DD')});
             this.setState({joinWalk: false});
             this.setState({createWalk: false});
           } else {
-            this.setState({eventText: "The " + event.name + " is scheduled to leave " + event.address + " lead by " + event.chaperone})
-            this.setState({callText: "If you would like to join this walk " + event.chaperone + " can be contacted at " + event.phone})
+            this.setState({eventText: "The " + event.name + " led by " + event.chaperone + " is scheduled to leave " + event.address})
+            this.setState({phoneNumber: event.phone});
+            this.setState({chaperone: event.chaperone});
+            this.setState({date: Moment(date).format('ddd[,] MMM DD')});
+            this.setState({walkName: event.name});
             this.setState({joinWalk: true});
             this.setState({createWalk: false});
           }
@@ -48,17 +62,67 @@ export default class Secured extends Component {
       if (!clickedOnScheduledEvent) {
         Moment.locale('en');
         this.setState({eventText: "No walks are scheduled for " + Moment(date).format('ddd[,] MMM DD') + ". Would you like to create a walk?"});
-        this.setState({callText: ''});
+        this.setState({date: date});
+        this.setState({chaperone: this.props.user})
         this.setState({createWalk: true});
         this.setState({joinWalk: false});
       }
     }
 
+    _createWalkName = (name) => {
+      var walkName = name.toString() + " Karavan";
+      this.setState({name: walkName});
+    }
+    
+    _callPhone() {
+      Communications.phonecall(this.state.phoneNumber, true);
+    }
+
+    _textPhone() {
+      Communications.text(this.state.phoneNumber, "Hi " + this.state.chaperone + "! My child is interested in joining your " + this.state.walkName + " scheduled for " + this.state.date);
+    }
+
+    _submit() {
+      Alert.alert("Submit");
+    }
+
     _showCallToAction() {
       if (this.state.joinWalk) {
-
+        return (
+          <View>
+            <TouchableOpacity style={[styles.buttonContainer, {marginVertical: 5, padding: 5, marginBottom: 5}]}  onPress={() => this._callPhone()} >
+              <View>
+                <Text style={[styles.walkData, {marginVertical: 0}]}>Call {this.state.chaperone}</Text>
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity style={[styles.buttonContainer, {marginVertical: 5, padding: 5}]} onPress={() => this._textPhone()} >
+              <View >
+                <Text style={[styles.walkData, {marginVertical: 0}]}>Text {this.state.chaperone}</Text>
+              </View>
+            </TouchableOpacity>
+          </View>
+        );
       } else if (this.state.createWalk) {
-
+        return (
+          <KeyboardAvoidingView behavior={this.state.behavior} style={[styles.interactionContainer, {paddingTop: 0}]}>
+            <View style={styles.createWalkForm}>
+              <TextInput
+              style={[styles.inputFieldCreateWalk, {height: 45}]}
+              placeholder="Name of the Walk (Be Creative!)"
+              onChangeText={(name) => this._createWalkName(name)}
+              />
+              <View style={[styles.buttonContainerCreateWalk,{paddingVertical: 5}]}>
+                <Button 
+                  color='white'
+                  title="Create the Walk"
+                  accessibilityLabel="Create the walk button"
+                  onPress={this.props.onAddWalk.bind(this, this.state)}
+                  disabled={this.state.newWalk == ''}
+                />
+              </View>
+            </View>
+          </KeyboardAvoidingView>
+        );
       } else {
         return null;
       }
@@ -70,7 +134,7 @@ export default class Secured extends Component {
         <View style={styles.banner}>
           <Text style={styles.title}>Welcome, {this.props.user}!</Text>
         </View>
-        <View>
+        <View style={{marginTop: 2}}>
           <Calendar
             //currentMonth={}       // Optional date to set the currently displayed month after initialization
             customStyle={customStyle} // Customize any pre-defined styles
@@ -86,26 +150,24 @@ export default class Secured extends Component {
             onTouchPrev={this.onTouchPrev}    // Callback for prev touch event
             prevButtonText={'<'}           // Text for previous button. Default: 'Prev'
             scrollEnabled={true}              // False disables swiping. Default: False
-            //selectedDate={new Date()}       // Day to be selected
+            //selectedDate={'2017-06-01'}       // Day to be selected
             showControls={true}               // False hides prev/next buttons. Default: False
             showEventIndicators={true}        // False hides event indicators. Default:False
-            //startDate={'2017-08-01'}          // The first month that will display. Default: current month
+            startDate={'2017-06-01'}          // The first month that will display. Default: current month
             titleFormat={'MMMM YYYY'}         // Format for displaying current month. Default: 'MMMM YYYY'
-            //today={'2017-05-16'}              // Defaults to today
+            today={'2017-06-01'}              // Defaults to today
             weekStart={0} // Day on which week starts 0 - Sunday, 1 - Monday, 2 - Tuesday, etc, Default: 1
           />
         </View>
         <View>
           <Text style={styles.underCalendarText}>{this.state.eventText}</Text>
-          <Text style={styles.underCalendarText}>{this.state.callText}</Text>
         </View>
-        <View>
-          {this._showCallToAction()}
-        </View>
+        {this._showCallToAction()}
         <View style={styles.navigation}>
-          <View style={[styles.navigationButtonContainer, styles.navHomeButton]}>
+          <View style={[styles.navigationButtonContainer, styles.navHomeButton, {backgroundColor: 'white', borderWidth: 3, borderColor: '#18cd9c'}]}>
             <Button 
-              color='#ffffff'
+              borderWidth='3'
+              color='#18cd9c'
               onPress={this.props.navigateButton.bind(this, "Home")}
               title="Home"
               accessibilityLabel="Home"
@@ -134,11 +196,13 @@ export default class Secured extends Component {
 }
 
   const customStyle = {
-    calendarContainer: {backgroundColor: 'white', height:340},
+    calendarContainer: {backgroundColor: '#ffffff', height:340},
     day: {fontSize: 15, textAlign: 'center'},
-    calendarControls: {backgroundColor: 'lightgray' },
-    currentDayText: {color: 'blue'},
+    calendarControls: {backgroundColor: '#18cd9c' },
+    currentDayText: {color: 'red'},
     hasEventCircle:{
-      backgroundColor: "#52a48b"
-    }
+      backgroundColor: "#18cd9c"
+    },
+    controlButton: {backgroundColor: '#18cd9c' },
+    controlButtonText: {color: '#ffffff'}
   }
