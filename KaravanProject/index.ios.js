@@ -92,7 +92,7 @@ class KaravanProject extends Component {
             { cancelable: false }
           );
         }
-      }, 1 * 60 * 1000);
+      }, 5 * 60 * 1000);
   }
 
   _navigateToNewScreen = (screen) => {
@@ -105,10 +105,10 @@ class KaravanProject extends Component {
     this.setState({screenName: 'Login'});
   } 
 
-  _addWalk = (walk) => {
+  _addWalk = (walk, screen) => {
     walkData.push(walk);
-    Alert.alert("Your walk has been added!");
-    this.setState({screenName: "Walks"});
+    Alert.alert("Your walk has been created!");
+    this.setState({screenName: screen});
   }
 
   _showWalkDataFor = (walk) => {
@@ -135,7 +135,8 @@ class KaravanProject extends Component {
     } else {
       if (this.state.isLoggedIn) {
         if (this.state.screenName == "Home") {          
-          return <Home user={this.state.accountUsername} walks={walkData} navigateButton={(screenName) => this._navigateToNewScreen(screenName)} />
+          return <Home user={this.state.accountUsername} phone={this.state.accountPhoneNumber} address={this.state.accountAddress} walks={walkData} 
+            onAddWalk={(newWalk) => this._addWalk(newWalk, "Walks")} navigateButton={(screenName) => this._navigateToNewScreen(screenName)} />
         } else if (this.state.screenName == "Walks") {
           return <Walks walks={walkData} 
             selectedWalk={(walk) => this._showWalkDataFor(walk)}
@@ -145,7 +146,7 @@ class KaravanProject extends Component {
               navigateButton={(screenName) => this._navigateToNewScreen(screenName)} />
         } else if (this.state.screenName == "CreateWalk") {
           return <CreateWalk user={this.state.accountUsername} phone={this.state.accountPhoneNumber} address={this.state.accountAddress}
-              walks={walkData} onAddWalk={(newWalk) => this._addWalk(newWalk)} onLogoutPress={() => this.setState({isLoggedIn: false})}
+              walks={walkData} onAddWalk={(newWalk) => this._addWalk(newWalk, "Walks")} onLogoutPress={() => this.setState({isLoggedIn: false})}
               navigateButton={(screenName) => this._navigateToNewScreen(screenName)} />
         } else if (this.state.screenName == "WalkData") {
           return <WalkData walks={walkData} selectedWalk={this.state.selectedWalk} onLogoutPress={() => this.setState({isLoggedIn: false})}

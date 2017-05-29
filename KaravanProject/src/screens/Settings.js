@@ -46,9 +46,9 @@ export default class Settings extends Component {
               accessibilityLabel="Walks"
             />
           </View>
-          <View style={[styles.navigationButtonContainer, styles.navSettingsButton]}>
+          <View style={[styles.navigationButtonContainer, styles.navSettingsButton, {backgroundColor: 'white', borderWidth: 3, borderColor: '#18cd9c'}]}>
             <Button
-              color='#ffffff'
+              color='#18cd9c'
               onPress={this.props.navigateButton.bind(this, "Settings")}
               title="Settings"
               accessibilityLabel="Settings"

@@ -44,7 +44,6 @@ _callPhone() {
 }
 
 _textPhone() {
-  // Communications.text('2069152928', 'Hi');
   Communications.text(this.state.phone, "Hi " + this.state.chaperone + "! My child is interested in joining your " + this.state.name + " scheduled for " + this.state.date);
 }
 
@@ -70,12 +69,12 @@ render() {
             <Text style={styles.walkData}><Text style={styles.walkDataLabel}>Contact:</Text> {this.state.phone}</Text>
               <TouchableOpacity style={[styles.buttonContainer, {marginVertical: 5, padding: 5, marginBottom: 5}]}  onPress={() => this._callPhone()} >
                 <View>
-                  <Text style={[styles.walkData, {marginVertical: 0}]}>Call</Text>
+                  <Text style={[styles.walkData, {marginVertical: 0}]}>Call {this.state.chaperone}</Text>
                 </View>
               </TouchableOpacity>
               <TouchableOpacity style={[styles.buttonContainer, {marginVertical: 5, padding: 5}]} onPress={() => this._textPhone()} >
                 <View >
-                  <Text style={[styles.walkData, {marginVertical: 0}]}>Text</Text>
+                  <Text style={[styles.walkData, {marginVertical: 0}]}>Text {this.state.chaperone}</Text>
                 </View>
               </TouchableOpacity>
             </View>
@@ -90,9 +89,9 @@ render() {
                 accessibilityLabel="Home"
               />
             </View>
-            <View style={styles.navigationButtonContainer}>
+            <View style={[styles.navigationButtonContainer, {backgroundColor: 'white', borderWidth: 3, borderColor: '#18cd9c'}]}>
               <Button
-                color='#ffffff'
+                color='#18cd9c'
                 onPress={this.props.navigateButton.bind(this, "Walks")}
                 title="Walks"
                 accessibilityLabel="Walks"

@@ -16,7 +16,7 @@ container: {
     position: 'absolute'
   },
   navigationButtonContainer: {
-    backgroundColor: '#1db0a2',
+    backgroundColor: '#18cd9c',
     paddingVertical: 5,
     justifyContent: 'center',
     flex: 1
@@ -40,7 +40,7 @@ container: {
     height: 300
   },
   buttonContainer: {
-    backgroundColor: '#1db0a2',
+    backgroundColor: '#18cd9c',
     borderRadius: 5,
     alignSelf: 'stretch',
     paddingVertical: 10,
@@ -103,7 +103,7 @@ container: {
     marginBottom: 100
   },
   loginButtonContainer: {
-    backgroundColor: '#1db0a2',
+    backgroundColor: '#18cd9c',
     borderRadius: 5,
     alignSelf: 'stretch',
     paddingVertical: 10,
@@ -146,8 +146,6 @@ container: {
     justifyContent: 'flex-start',
     padding: 18,
     backgroundColor: '#FFFFFF',
-    borderColor: 'darkgray',
-    borderWidth: .5,
   },
   walkArrow: {
     height: 30,
@@ -196,7 +194,7 @@ container: {
     marginBottom: 20
   },
   buttonContainerLogin: {
-    backgroundColor: '#1db0a2',
+    backgroundColor: '#18cd9c',
     borderRadius: 5,
     alignSelf: 'stretch',
     paddingVertical: 10,
@@ -209,7 +207,7 @@ container: {
     shadowOpacity: 0.25,
   },
   buttonContainerCreateWalk: {
-    backgroundColor: '#1db0a2',
+    backgroundColor: '#18cd9c',
     borderRadius: 5,
     margin: 10,
     alignSelf: 'stretch',
@@ -223,7 +221,7 @@ container: {
     shadowOpacity: 0.25,
   },
   requestAccountButtonContainer: {
-    backgroundColor: '#1db0a2',
+    backgroundColor: '#18cd9c',
     borderRadius: 5,
     alignSelf: 'stretch',
     paddingVertical: 10,

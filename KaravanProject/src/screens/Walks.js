@@ -37,7 +37,7 @@ export default class Walks extends Component {
   renderRow(rowData, sectionID, rowID) {
     return(
         <TouchableHighlight onPress={this.props.selectedWalk.bind(this, rowData)}>
-            <View style={styles.row}>
+            <View style={[styles.row, styles.separator]}>
                 <Text style={styles.rowText}>{rowData}</Text>
             </View>
       </TouchableHighlight>
@@ -50,7 +50,7 @@ export default class Walks extends Component {
         <View style={styles.banner}> 
           <Text style={styles.title}>Walks</Text>
         </View>
-        <View>
+        <View style={{height: 450, backgroundColor: 'white'}}>
           <ListView
             dataSource={this.state.dataSource}
             renderRow={this.renderRow.bind(this)}
@@ -73,9 +73,9 @@ export default class Walks extends Component {
               accessibilityLabel="Home"
             />
           </View>
-          <View style={[styles.navigationButtonContainer, styles.navWalksButton]}>
+          <View style={[styles.navigationButtonContainer, styles.navWalksButton, {backgroundColor: 'white', borderWidth: 3, borderColor: '#18cd9c'}]}>
             <Button
-              color='#ffffff'
+              color='#18cd9c'
               onPress={this.props.navigateButton.bind(this, "Walks")}
               title="Walks"
               accessibilityLabel="Walks"

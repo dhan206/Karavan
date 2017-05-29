@@ -66,19 +66,19 @@ export default class CreateWalk extends Component {
           onTouchPrev={this.onTouchPrev}    // Callback for prev touch event
           prevButtonText={'<'}           // Text for previous button. Default: 'Prev'
           scrollEnabled={true}              // False disables swiping. Default: False
-          //selectedDate={new Date()}       // Day to be selected
+          //selectedDate={'2017-06-01'}       // Day to be selected
           showControls={true}               // False hides prev/next buttons. Default: False
           showEventIndicators={true}        // False hides event indicators. Default:False
-          //startDate={'2017-08-01'}          // The first month that will display. Default: current month
+          startDate={'2017-06-01'}          // The first month that will display. Default: current month
           titleFormat={'MMMM YYYY'}         // Format for displaying current month. Default: 'MMMM YYYY'
-          //today={'2017-05-16'}              // Defaults to today
+          today={'2017-06-01'}              // Defaults to today
           weekStart={0} // Day on which week starts 0 - Sunday, 1 - Monday, 2 - Tuesday, etc, Default: 1
         />
       <KeyboardAvoidingView behavior={this.state.behavior} style={styles.interactionContainer}>
         <View style={styles.createWalkForm}>
-          <Text style={[styles.underCalendarText, {padding: 0, paddingTop: 5, paddingHorizontal:5, marginHorizontal: 5}]}>2. Name your walk</Text>
+          <Text style={[styles.underCalendarText, {padding: 0, paddingTop: 3, paddingHorizontal:5, marginHorizontal: 5}]}>2. Name your walk</Text>
           <TextInput
-          style={styles.inputFieldCreateWalk}
+          style={[styles.inputFieldCreateWalk, {height: 45}]}
           autoCapitalize="none"
           placeholder="Name of the Walk (Be Creative!)"
           onChangeText={(name) => this._createWalkName(name)}
@@ -88,11 +88,12 @@ export default class CreateWalk extends Component {
               color='white'
               title="Create the Walk"
               accessibilityLabel="Create the walk button"
-              onPress={this.props.navigateButton.bind(this, "Confirm") && this.props.onAddWalk.bind(this, this.state)}
+              onPress={this.props.onAddWalk.bind(this, this.state)}
               disabled={this.state.dateSelectedText != 'Select a date for your walk' && !this.state.name}
             />
           </View>
         </View>
+        
       </KeyboardAvoidingView>
       <View style={styles.navigation}>
         <View style={[styles.navigationButtonContainer, styles.navHomeButton]}>
@@ -103,9 +104,9 @@ export default class CreateWalk extends Component {
             accessibilityLabel="Home"
           />
         </View>
-        <View style={[styles.navigationButtonContainer, styles.navWalksButton]}>
+        <View style={[styles.navigationButtonContainer, styles.navWalksButton, {backgroundColor: 'white', borderWidth: 3, borderColor: '#18cd9c'}]}>
           <Button
-            color='#ffffff'
+            color='#18cd9c'
             onPress={this.props.navigateButton.bind(this, "Walks")}
             title="Walks"
             accessibilityLabel="Walks"
@@ -125,12 +126,14 @@ export default class CreateWalk extends Component {
   }
 }
 
-const customStyle = {
+  const customStyle = {
     calendarContainer: {backgroundColor: 'white', height:340},
     day: {fontSize: 15, textAlign: 'center'},
-    calendarControls: {backgroundColor: 'lightgray' },
+    calendarControls: {backgroundColor: '#18cd9c' },
     currentDayText: {color: 'blue'},
     hasEventCircle:{
-      backgroundColor: "#52a48b"
-    }
+      backgroundColor: "#18cd9c"
+    },
+    controlButton: {backgroundColor: '#18cd9c' },
+    controlButtonText: {color: '#ffffff'}
   }
