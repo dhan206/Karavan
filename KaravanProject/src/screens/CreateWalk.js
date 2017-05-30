@@ -83,7 +83,7 @@ export default class CreateWalk extends Component {
           placeholder="Name of the Walk (Be Creative!)"
           onChangeText={(name) => this._createWalkName(name)}
           />
-          <View style={[styles.buttonContainerCreateWalk,{paddingVertical: 5}]}>
+          <View style={[styles.buttonContainerCreateWalk,{paddingVertical: 5, marginHorizontal: 10, marginTop: 10}]}>
             <Button 
               color='white'
               title="Create the Walk"
