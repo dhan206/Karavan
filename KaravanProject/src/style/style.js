@@ -166,16 +166,16 @@ container: {
   landingPageContainer: {
     backgroundColor: "#2980b9",
     flex: 1,
-    padding: 40,
+    padding: 25,
     justifyContent: 'center',
     alignItems: 'center'
   },
   landingPageText: {
-    fontSize: 20,
+    fontSize: 16,
     textAlign: "center",
-    fontStyle: "italic",
-    fontFamily: "Hiragino Sans",
-    color: "white",
+    // fontStyle: "italic",
+    // fontFamily: "Hiragino Sans",
+    color: 'rgba(255, 255, 255, 0.7)',
     marginVertical: 20
   },
   buttonContainerSignup: {

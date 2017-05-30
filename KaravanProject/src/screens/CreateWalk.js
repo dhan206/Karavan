@@ -130,7 +130,7 @@ export default class CreateWalk extends Component {
     calendarContainer: {backgroundColor: 'white', height:340},
     day: {fontSize: 15, textAlign: 'center'},
     calendarControls: {backgroundColor: '#18cd9c' },
-    currentDayText: {color: 'blue'},
+    currentDayText: {color: 'red', fontWeight: '700', fontSize: 20},
     hasEventCircle:{
       backgroundColor: "#18cd9c"
     },
