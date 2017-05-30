@@ -139,6 +139,14 @@ export default class InitialSetupFirst extends Component {
                         disabled={!this.state.username||!this.state.password}
                         />
                     </View>
+                    <View style={[styles.requestAccountButtonContainer, {marginTop: 150}]}>
+                        <Button 
+                        title="Back to Landing Page"
+                        color="#ffffff"
+                        accessibilityLabel="Back to Landing Page"
+                        onPress={this.props.backToLandingPage.bind(this)}
+                        />
+                    </View>
                     <Text>
                         
                     </Text>

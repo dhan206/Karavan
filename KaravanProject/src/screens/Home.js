@@ -199,7 +199,7 @@ export default class Secured extends Component {
     calendarContainer: {backgroundColor: '#ffffff', height:340},
     day: {fontSize: 15, textAlign: 'center'},
     calendarControls: {backgroundColor: '#18cd9c' },
-    currentDayText: {color: 'red'},
+    currentDayText: {color: 'red', fontWeight: '700', fontSize: 20},
     hasEventCircle:{
       backgroundColor: "#18cd9c"
     },

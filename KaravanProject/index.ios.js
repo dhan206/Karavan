@@ -27,22 +27,19 @@ import Confirm from './src/screens/Confirm';
 import InitialSetupFirst from './src/screens/InitialSetupFirst';
 import LandingPage from './src/screens/LandingPage';
 import Onboarding from 'react-native-simple-onboarding';
+import styles from './src/style/style.js';
 
 var accountData = require('./src/data/accountdata.json');
 var walkData = require('./src/data/walkData.json');
 var karavanLogo = require('./src/img/logo.png');
-
-import styles from './src/style/style.js';
-
-// const firebaseConfig = {
-//   apiKey: "<YOUR-API-KEY>",
-//   authDomain: "<YOUR-AUTH-DOMAIN>",
-//   databaseURL: "https://karavan-e5921.firebaseio.com/",
-//   storageBucket: "<YOUR-STORAGE-BUCKET>"
-// };
-// firebase.initializeApp(firebaseConfig);
+var joinWalk = require('./src/img/JoinWalk.png');
+var createWalk = require('./src/img/CreateWalk.png');
+var secure = require('./src/img/Secure.png');
 
 const KaravanLogo = ()  => <Image style={styles.logoStyle} source={karavanLogo} />;
+const JoinWalk = () => <Image style={{width: 350, height: 290}} source={joinWalk} />;
+const CreateWalkOnboarding = () => <Image style={{width: 350, height: 290}} source={createWalk} />;
+const Security = () => <Image style={{width: 200, height: 255}} source={secure} />;
             
 class KaravanProject extends Component {
   state = {
@@ -125,7 +122,10 @@ class KaravanProject extends Component {
       if(this.state.showOnBoarding) {
         return <Onboarding
                 pages={[
-                  { backgroundColor: '#2980b9', image: <KaravanLogo />, title: 'Welcome to Karavan!', subtitle: 'Let us' },
+                  { backgroundColor: '#2980b9', image: <KaravanLogo />, title: 'Welcome to Karavan!', subtitle: 'Helping kids walk to school together, safely.' },
+                  { backgroundColor: '#2980b9', image: <JoinWalk />, title: 'Joining a Walk', subtitle: 'Parents can enroll their child(ren) in a walk by contacting the walk\'s chaperone.' },
+                  { backgroundColor: '#2980b9', image: <CreateWalkOnboarding />, title: 'Chaperoning a Walk', subtitle: 'Parents can create walks, thus becoming a chaperone.' },
+                  { backgroundColor: '#2980b9', image: <Security />, title: 'Secure Service', subtitle: 'Parents must be verified by the school in order to create an account.' },
                 ]}
                 onEnd={() => this._onBoarded()}
               />
@@ -158,7 +158,7 @@ class KaravanProject extends Component {
       } else if (this.state.screenName == "Login") {
         return <Login onLoginPress={(object) => this._attemptLogin(object)} />;
       } else if (this.state.screenName == "InitialSetupFirst") {
-        return <InitialSetupFirst onRequestAccountPress={(object) => this._requestAccount(object)} />
+        return <InitialSetupFirst onRequestAccountPress={(object) => this._requestAccount(object)} backToLandingPage={(object) => this._navigateToNewScreen("LandingPage")} />
       } else if (this.state.screenName == "LandingPage") {
         return <LandingPage navigateButton={(screenName) => this._navigateToNewScreen(screenName)} />
       }
