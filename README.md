@@ -1,4 +1,4 @@
-# Karavan - INFO490/INFO491 Informatics Undergraduate Capstone Project iOS
+# Karavan - Informatics Undergraduate Capstone Project iOS
 
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/hBWK14Ubp88/0.jpg)](https://www.youtube.com/watch?v=hBWK14Ubp88)
 
