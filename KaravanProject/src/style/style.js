@@ -66,7 +66,7 @@ container: {
     shadowRadius: 10,
     shadowOpacity: 0.25,
     margin: 30,
-    bottom: -425
+    marginTop: 0
   },
   loginContainer: {
     flex: 1,
@@ -209,7 +209,6 @@ container: {
   buttonContainerCreateWalk: {
     backgroundColor: '#18cd9c',
     borderRadius: 5,
-    margin: 10,
     alignSelf: 'stretch',
     paddingVertical: 10,
     shadowColor: '#000000',
@@ -219,6 +218,8 @@ container: {
     },
     shadowRadius: 10,
     shadowOpacity: 0.25,
+    margin: 30,
+    marginTop: 15
   },
   requestAccountButtonContainer: {
     backgroundColor: '#18cd9c',

@@ -60,7 +60,7 @@ export default class InitialSetupFirst extends Component {
                     autoCorrect={false}
                     autoFocus={true}
                     autoCapitalize="none"
-                    placeholder="Username"/>
+                    placeholder="Name"/>
                     <TextInput 
                     style={styles.inputField}
                     onChangeText={(input) => this.setState({email: input})}
@@ -73,7 +73,7 @@ export default class InitialSetupFirst extends Component {
                     autoCorrect={false}
                     keyboardType = 'numeric'
                     maxLength = {10}
-                    placeholder="Phone Number"/>
+                    placeholder="Phone Number (ie 2065432100)"/>
                     <TextInput 
                     style={styles.inputField}
                     onChangeText={(input) => this.setState({address: input})}

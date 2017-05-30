@@ -111,13 +111,13 @@ export default class Secured extends Component {
               placeholder="Name of the Walk (Be Creative!)"
               onChangeText={(name) => this._createWalkName(name)}
               />
-              <View style={[styles.buttonContainerCreateWalk,{paddingVertical: 5}]}>
+              <View style={[styles.buttonContainerCreateWalk,{paddingVertical: 5, marginHorizontal: 10}]}>
                 <Button 
                   color='white'
                   title="Create the Walk"
                   accessibilityLabel="Create the walk button"
                   onPress={this.props.onAddWalk.bind(this, this.state)}
-                  disabled={this.state.newWalk == ''}
+                  disabled={this.state.walkName == ''}
                 />
               </View>
             </View>
