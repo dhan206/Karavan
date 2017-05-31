@@ -69,12 +69,12 @@ render() {
             <Text style={styles.walkData}><Text style={styles.walkDataLabel}>Contact:</Text> {this.state.phone}</Text>
               <TouchableOpacity style={[styles.buttonContainer, {marginVertical: 5, padding: 5, marginBottom: 5}]}  onPress={() => this._callPhone()} >
                 <View>
-                  <Text style={[styles.walkData, {marginVertical: 0}]}>Call {this.state.chaperone}</Text>
+                  <Text style={[styles.walkData, {marginVertical: 0}]}>Call: {this.state.chaperone}</Text>
                 </View>
               </TouchableOpacity>
               <TouchableOpacity style={[styles.buttonContainer, {marginVertical: 5, padding: 5}]} onPress={() => this._textPhone()} >
                 <View >
-                  <Text style={[styles.walkData, {marginVertical: 0}]}>Text {this.state.chaperone}</Text>
+                  <Text style={[styles.walkData, {marginVertical: 0}]}>Text: {this.state.chaperone}</Text>
                 </View>
               </TouchableOpacity>
             </View>
