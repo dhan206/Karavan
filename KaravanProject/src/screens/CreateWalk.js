@@ -89,7 +89,7 @@ export default class CreateWalk extends Component {
               title="Create the Walk"
               accessibilityLabel="Create the walk button"
               onPress={this.props.onAddWalk.bind(this, this.state)}
-              disabled={this.state.dateSelectedText != 'Select a date for your walk' && !this.state.name}
+              disabled={this.state.dateSelectedText == 'Select a date for your walk' || !this.state.name}
             />
           </View>
         </View>
