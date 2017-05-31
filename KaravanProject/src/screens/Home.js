@@ -117,7 +117,7 @@ export default class Secured extends Component {
                   title="Create the Walk"
                   accessibilityLabel="Create the walk button"
                   onPress={this.props.onAddWalk.bind(this, this.state)}
-                  disabled={this.state.walkName == ''}
+                  disabled={!this.state.name || this.state.name == ''}
                 />
               </View>
             </View>
