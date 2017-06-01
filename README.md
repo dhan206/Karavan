@@ -6,7 +6,7 @@ Karavan is a mobile application that facilitates group walks to safely allow nei
 
 # Contents
  * Code for the React Native components '/KaaravanProject'
- * Code for ios environment components '/Karavan'
+ * NOTE: '/Karavan' is a deprecated version using native iOS code
 
 # Running Karavan
 To run Karavan follow the following steps.
