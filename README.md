@@ -28,7 +28,7 @@ To run Karavan follow the following steps.
 ## Updates:
 
 ## Contact:
- * Derek Han:
+ * Derek Han: dhan206@uw.edu
  * Michael Nguyen: nguyemic@gmail.com
- * Kendall Reonal:
- * Andrew Kyrios:andrewkyrios@gmail.com
+ * Kendall Reonal: kreonal@uw.edu
+ * Andrew Kyrios: andrewkyrios@gmail.com
