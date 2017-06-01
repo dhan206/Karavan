@@ -31,4 +31,4 @@ To run Karavan follow the following steps.
  * Derek Han:
  * Michael Nguyen: nguyemic@gmail.com
  * Kendall Reonal:
- * Andrew Kyrios:
+ * Andrew Kyrios:andrewkyrios@gmail.com
