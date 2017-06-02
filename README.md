@@ -1,6 +1,6 @@
 # Karavan - Informatics Undergraduate Capstone Project iOS
 
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/hBWK14Ubp88/0.jpg)](https://www.youtube.com/watch?v=hBWK14Ubp88)
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/hBWK14Ubp88/0.jpg)](https://www.youtube.com/watch?v=14WUnQPTJNc&t=1s)
 
 Karavan is a mobile application that facilitates group walks to safely allow neighborhood children to walk to school together with an adult chaperone. Users of Karavan can volunteer to become chaperones to lead group walks, or join their child to existing walks. No information about children is stored in the application.
 
@@ -14,8 +14,6 @@ This repository contains the necessary code used to run and emulate Karavan on a
 * Ability to view information about a specific, existing walk
 * Ability to Join Walk
 * Security Features
- * Code for the React Native components '/KaaravanProject'
- * NOTE: '/Karavan' is a deprecated version using native iOS code
 
 # Technical Decisions
 To keep the the experience as safe and secure as possible, only verified parents will be able to create a Karavan account. Once fully implemented, the verification process involves a parent requesting an account on the mobile application’s initial login page. This information is sent to the school the parent indicated in the request, and a representative from the school will verify that she/he is a parent of a child at the school. Once the verification is complete, the representative will contact the parent with account creation information. 
