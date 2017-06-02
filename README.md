@@ -1,6 +1,6 @@
 # Karavan - Informatics Undergraduate Capstone Project iOS
 
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/hBWK14Ubp88/0.jpg)](https://www.youtube.com/watch?v=14WUnQPTJNc&t=1s)
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/hBWK14Ubp88/0.jpg)](https://www.youtube.com/watch?v=14WUnQPTJNc&t)
 
 Karavan is a mobile application that facilitates group walks to safely allow neighborhood children to walk to school together with an adult chaperone. Users of Karavan can volunteer to become chaperones to lead group walks, or join their child to existing walks. No information about children is stored in the application.
 
